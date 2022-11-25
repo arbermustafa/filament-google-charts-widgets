@@ -1,0 +1,12 @@
+.idea
+.phpunit.result.cache
+build
+composer.lock
+package-lock.json
+coverage
+docs
+phpunit.xml
+phpstan.neon
+testbench.yaml
+vendor
+node_modules
