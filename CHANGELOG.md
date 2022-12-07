@@ -2,6 +2,11 @@
 
 All notable changes to `filament-google-charts-widgets` will be documented in this file.
 
+## 1.0.3 - 2022-12-07
+
+### Fixed
+- Fixed view and js for better rendering
+
 ## 1.0.2 - 2022-12-07
 
 ### Fixed
