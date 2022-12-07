@@ -1,4 +1,20 @@
 {
+    "name": "filament-google-charts-widgets",
+    "version": "1.0.1",
+    "description": "Chart widget for Filament Php using Google Charts",
+    "keywords": [
+        "arbermustafa",
+        "laravel",
+        "filament-plugin",
+        "filament-google-charts-widgets",
+        "google-charts",
+        "charts"
+    ],
+    "author": {
+        "name": "Arber Mustafa",
+        "email": "info@arbermustafa.com",
+        "url": "https://arbermustafa.com"
+    },
     "private": true,
     "scripts": {
         "dev:styles": "npx tailwindcss -i resources/css/widgets/filament-google-charts-widgets.css -o resources/dist/filament-google-charts-widgets.css --postcss --watch",

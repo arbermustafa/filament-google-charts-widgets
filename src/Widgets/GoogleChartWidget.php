@@ -20,6 +20,11 @@ class GoogleChartWidget extends Widget
 
     protected static string $view = 'filament-google-charts-widgets::widgets.chart-widget';
 
+    public function getId(): ?string
+    {
+        return $this->id;
+    }
+
     public function mount()
     {
         $this->dataChecksum = $this->generateDataChecksum();

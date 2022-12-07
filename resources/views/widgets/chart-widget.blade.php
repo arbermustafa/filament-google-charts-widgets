@@ -17,13 +17,12 @@
         @endif
 
         <div {!! ($interval = $this->getPollingInterval()) ? "wire:poll.{$interval}=\"updateChart\"" : '' !!}>
-            <div id="chart-wrapper">
+            <div class="chart-wrapper-{{ $this->getId() }}">
                 <google-chart
-                    id='filament-google-charts'
+                    class='filament-google-charts'
                     type='{{ $this->getType() }}'
                     options='{{ json_encode($this->getOptions()) }}'
                     data='{{ json_encode($this->getCachedData()) }}'>
-                </google-chart>
             </div>
         </div>
     </x-filament::card>
