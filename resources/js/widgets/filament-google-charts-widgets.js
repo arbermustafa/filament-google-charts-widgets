@@ -1,15 +1,24 @@
 import '@google-web-components/google-chart'
-
-window.updateChart = function (data) {
+;(function () {
     const chart = document.getElementById('filament-google-charts')
 
-    if (!chart) {
-        return
+    window.addEventListener(
+        'resize',
+        () => {
+            chart.redraw()
+        },
+        true,
+    )
+
+    window.updateChart = function (data) {
+        if (!chart) {
+            return
+        }
+
+        chart.rows = data
     }
 
-    chart.rows = data
-}
-
-Livewire.on('updateChart', (data) => {
-    window.updateChart(data)
-})
+    Livewire.on('updateChart', (data) => {
+        window.updateChart(data)
+    })
+})()
