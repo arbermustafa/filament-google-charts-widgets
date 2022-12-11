@@ -1,5 +1,6 @@
 @php
     $heading = $this->getHeading();
+    $id = $this->getId();
 @endphp
 
 <x-filament::widget class="filament-widgets-chart-widget">
@@ -16,16 +17,20 @@
             <x-filament::hr />
         @endif
 
-        <div {!! ($interval = $this->getPollingInterval()) ? "wire:poll.{$interval}=\"updateChart\"" : '' !!}>
-            <div class="chart-wrapper-{{ $this->getId() }}">
+        <div {!!
+            ($interval = $this->getPollingInterval())
+            ? "wire:poll.{$interval}=\"updateChart\""
+            : ''
+        !!}>
+            <div class="chart-wrapper">
                 <google-chart
-                    id='filament-google-charts-{{ $this->getId() }}'
+                    id='filament-google-charts-{{ $id }}'
                     type='{{ $this->getType() }}'
                     options='{{ json_encode($this->getOptions()) }}'
                     data='{{ json_encode($this->getCachedData()) }}'
                     x-data = "{
                         init: function () {
-                            const chart = document.getElementById('filament-google-charts-{{ $this->getId() }}')
+                            const chart = document.getElementById('filament-google-charts-{{ $id }}')
 
                             $wire.on('updateChart', async ({ data }) => {
                                 chart.data = data
