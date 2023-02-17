@@ -18,7 +18,7 @@ return [
     'default_options' => [
         'hAxis' => [
             'titleTextStyle' => [
-                'color' => '#607d8b'
+                'color' => '#607d8b',
             ],
             'gridlines' => [
                 'count' => 0,
@@ -34,7 +34,7 @@ return [
             'minValue' => 0,
             'gridlines' => [
                 'color' => '#37474f',
-                'count' => 4
+                'count' => 4,
             ],
             'baselineColor' => 'transparent',
         ],

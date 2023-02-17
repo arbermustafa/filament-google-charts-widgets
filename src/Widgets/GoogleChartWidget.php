@@ -25,7 +25,7 @@ class GoogleChartWidget extends Widget
         return $this->id;
     }
 
-    public function mount()
+    public function mount(): void
     {
         $this->dataChecksum = $this->generateDataChecksum();
     }
@@ -45,7 +45,7 @@ class GoogleChartWidget extends Widget
         return [];
     }
 
-    public function updateChart()
+    public function updateChart(): void
     {
         $newDataChecksum = $this->generateDataChecksum();
 
