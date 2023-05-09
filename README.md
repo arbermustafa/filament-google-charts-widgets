@@ -17,6 +17,7 @@ You can publish the config file with:
 ```bash
 php artisan vendor:publish --tag=filament-google-charts-widgets-config
 ```
+
 The `config` file contains default global customization options for better charts rendering in light/dark theme based on the great work of [Weekdone](https://github.com/weekdone/GoogleChartStyles)
 
 Optionally, you can publish the view using:
@@ -97,14 +98,15 @@ class DemoDonutChart extends DonutChartWidget
 ![Pie & Donut charts](./docs/images/demo-charts.png)
 
 ## Available chart types
+
 Below is a list of available chart widget classes which you may extend, and their corresponding Google Charts documentation page, for inspiration what to return from getData():
 
-- `ArberMustafa\FilamentGoogleCharts\Widgets\AreaChartWidget` - [Google Charts documentation](https://developers.google.com/chart/interactive/docs/gallery/areachart#configuration-options)
-- `ArberMustafa\FilamentGoogleCharts\Widgets\BarChartWidget` - [Google Charts documentation](https://developers.google.com/chart/interactive/docs/gallery/barchart#configuration-options)
-- `ArberMustafa\FilamentGoogleCharts\Widgets\ColumnChartWidget` - [Google Charts documentation](https://developers.google.com/chart/interactive/docs/gallery/columnchart#configuration-options)
-- `ArberMustafa\FilamentGoogleCharts\Widgets\DonutChartWidget` - [Google Charts documentation](https://developers.google.com/chart/interactive/docs/gallery/piechart#donut)
-- `ArberMustafa\FilamentGoogleCharts\Widgets\LineChartWidget` - [Google Charts documentation](https://developers.google.com/chart/interactive/docs/gallery/linechart#configuration-options)
-- `ArberMustafa\FilamentGoogleCharts\Widgets\PieChartWidget` - [Google Charts documentation](https://developers.google.com/chart/interactive/docs/gallery/piechart#configuration-options)
+-   `ArberMustafa\FilamentGoogleCharts\Widgets\AreaChartWidget` - [Google Charts documentation](https://developers.google.com/chart/interactive/docs/gallery/areachart#configuration-options)
+-   `ArberMustafa\FilamentGoogleCharts\Widgets\BarChartWidget` - [Google Charts documentation](https://developers.google.com/chart/interactive/docs/gallery/barchart#configuration-options)
+-   `ArberMustafa\FilamentGoogleCharts\Widgets\ColumnChartWidget` - [Google Charts documentation](https://developers.google.com/chart/interactive/docs/gallery/columnchart#configuration-options)
+-   `ArberMustafa\FilamentGoogleCharts\Widgets\DonutChartWidget` - [Google Charts documentation](https://developers.google.com/chart/interactive/docs/gallery/piechart#donut)
+-   `ArberMustafa\FilamentGoogleCharts\Widgets\LineChartWidget` - [Google Charts documentation](https://developers.google.com/chart/interactive/docs/gallery/linechart#configuration-options)
+-   `ArberMustafa\FilamentGoogleCharts\Widgets\PieChartWidget` - [Google Charts documentation](https://developers.google.com/chart/interactive/docs/gallery/piechart#configuration-options)
 
 ## Live updating (polling)
 
@@ -142,16 +144,17 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 ## Contributing
 
 If you want to contribute to this package, you may want to test it in a real Filament project:
-- Fork this repository to your Github account.
-- Create a Filament app locally.
-- Clone your fork in your Filament app root directoy.
-- In the `/filament-google-charts-widgets` directory, create a branch for your fix/improvement, e.g. `fix/pie-chart`.
+
+-   Fork this repository to your Github account.
+-   Create a Filament app locally.
+-   Clone your fork in your Filament app root directoy.
+-   In the `/filament-google-charts-widgets` directory, create a branch for your fix/improvement, e.g. `fix/pie-chart`.
 
 Install the packages in your app's `composer.json`:
 
 ```json
 "require": {
-    "arbermustafa/filament-google-charts-widgets": "dev-fix/pie-chart as main-dev",
+    "arbermustafa/filament-google-charts-widgets": "dev-fix/pie-chart as dev-main",
 },
 "repositories": [
     {
@@ -171,10 +174,10 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [Arber Mustafa](https://github.com/arbermustafa)
-- [Google Web Components](https://github.com/GoogleWebComponents/google-chart)
-- [Weekdone](https://github.com/weekdone/GoogleChartStyles)
-- [All Contributors](../../contributors)
+-   [Arber Mustafa](https://github.com/arbermustafa)
+-   [Google Web Components](https://github.com/GoogleWebComponents/google-chart)
+-   [Weekdone](https://github.com/weekdone/GoogleChartStyles)
+-   [All Contributors](../../contributors)
 
 ## License
 

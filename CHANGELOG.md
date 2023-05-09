@@ -2,6 +2,16 @@
 
 All notable changes to `filament-google-charts-widgets` will be documented in this file.
 
+## 1.0.7 - 2023-05-09
+
+### Changed
+
+-   Updated Google Charts library
+
+### Changed
+
+-   Changed `CHANGELOG` file
+
 ## 1.0.6 - 2023-02-17
 
 ### Changed
