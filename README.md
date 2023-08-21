@@ -1,6 +1,6 @@
 # Filament Google Charts Widgets
 
-![](https://banners.beyondco.de/Filament%20Google%20Charts%20Widgets.png?theme=light&packageManager=composer+require&packageName=arbermustafa%2Ffilament-google-charts-widgets&pattern=architect&style=style_1&description=Chart+widgets+using+Google+Charts&md=1&showWatermark=0&fontSize=100px&images=chart-pie)
+![](https://banners.beyondco.de/Filament%20Google%20Charts%20Widgets.png?theme=light&packageManager=composer+require&packageName=arbermustafa%2Ffilament-google-charts-widgets%3A%22%5E1.0.8%22&pattern=architect&style=style_1&description=Chart+widgets+using+Google+Charts&md=1&showWatermark=0&fontSize=100px&images=chart-pie)
 
 Create chart widgets using [Google Charts](https://developers.google.com/chart).
 
@@ -9,8 +9,10 @@ Create chart widgets using [Google Charts](https://developers.google.com/chart).
 You can install the package into a Laravel app that uses [Filament](https://filamentphp.com) via composer::
 
 ```bash
-composer require arbermustafa/filament-google-charts-widgets
+composer require arbermustafa/filament-google-charts-widgets:"^1.0.8"
 ```
+
+**Filament V3** - if you are using Filament v3.x, you can use [this section](https://github.com/arbermustafa/filament-google-charts-widgets)
 
 You can publish the config file with:
 
