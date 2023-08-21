@@ -5,10 +5,13 @@ namespace ArberMustafa\FilamentGoogleCharts\Widgets;
 use ArberMustafa\FilamentGoogleCharts\FilamentGoogleCharts;
 use Filament\Widgets\Concerns\CanPoll;
 use Filament\Widgets\Widget;
+use Illuminate\Support\Str;
 
 class GoogleChartWidget extends Widget
 {
     use CanPoll;
+
+    protected static ?string $chartId = null;
 
     protected ?array $cachedData = null;
 
@@ -20,9 +23,9 @@ class GoogleChartWidget extends Widget
 
     protected static string $view = 'filament-google-charts-widgets::widgets.chart-widget';
 
-    public function getId(): ?string
+    public function getChartId(): ?string
     {
-        return $this->id;
+        return static::$chartId ?? 'googleChart_' . Str::random(10);
     }
 
     public function mount(): void
@@ -52,9 +55,8 @@ class GoogleChartWidget extends Widget
         if ($newDataChecksum !== $this->dataChecksum) {
             $this->dataChecksum = $newDataChecksum;
 
-            $this->emitSelf('updateChart', [
-                'data' => $this->getCachedData(),
-            ]);
+            $this
+                ->dispatch('updateChart', data: $this->getCachedData());
         }
     }
 

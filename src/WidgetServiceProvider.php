@@ -2,34 +2,32 @@
 
 namespace ArberMustafa\FilamentGoogleCharts;
 
-use Filament\PluginServiceProvider;
+use Filament\Support\Assets\AlpineComponent;
+use Filament\Support\Assets\Css;
+use Filament\Support\Facades\FilamentAsset;
 use Spatie\LaravelPackageTools\Package;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class WidgetServiceProvider extends PluginServiceProvider
+class WidgetServiceProvider extends PackageServiceProvider
 {
     public static string $name = 'filament-google-charts-widgets';
 
     public function configurePackage(Package $package): void
     {
-        parent::configurePackage($package);
-
         $package
             ->name(static::$name)
-            ->hasAssets()
+            ->hasViews()
             ->hasConfigFile();
     }
 
-    protected function getStyles(): array
+    public function packageBooted(): void
     {
-        return [
-            self::$name . '-styles' => __DIR__ . '/../resources/dist/' . '/filament-google-charts-widgets.css',
-        ];
-    }
-
-    protected function getScripts(): array
-    {
-        return [
-            self::$name . '-scripts' => __DIR__ . '/../resources/dist/' . '/filament-google-charts-widgets.js',
-        ];
+        FilamentAsset::register(
+            assets: [
+                Css::make(static::$name, __DIR__ . '/../resources/dist/filament-google-charts-widgets.css'),
+                AlpineComponent::make(static::$name, __DIR__ . '/../resources/dist/filament-google-charts-widgets.js'),
+            ],
+            package: 'arbermustafa/filament-google-charts-widgets'
+        );
     }
 }

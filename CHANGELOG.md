@@ -2,6 +2,10 @@
 
 All notable changes to `filament-google-charts-widgets` will be documented in this file.
 
+## 2.0.0 - 2023-08-21
+
+-   Updated the plugin to support `Filament V3`
+
 ## 1.0.7 - 2023-05-09
 
 ### Changed

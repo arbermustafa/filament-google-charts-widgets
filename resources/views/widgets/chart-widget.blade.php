@@ -1,44 +1,34 @@
 @php
+    $chartId = $this->getChartId();
     $heading = $this->getHeading();
-    $id = $this->getId();
 @endphp
 
-<x-filament::widget class="filament-widgets-chart-widget">
-    <x-filament::card>
-        @if ($heading)
-            <div class="flex items-center justify-between gap-8">
-                @if ($heading)
-                    <x-filament::card.heading>
-                        {{ $heading }}
-                    </x-filament::card.heading>
-                @endif
-            </div>
-
-            <x-filament::hr />
-        @endif
-
-        <div {!!
-            ($interval = $this->getPollingInterval())
-            ? "wire:poll.{$interval}=\"updateChart\""
-            : ''
-        !!}>
-            <div class="chart-wrapper">
+<x-filament-widgets::widget>
+    <x-filament::section
+        :heading="$heading"
+        class="fi-wi-chart"
+    >
+        <div
+            @if ($pollingInterval = $this->getPollingInterval())
+                wire:poll.{{ $pollingInterval }}="updateChart"
+            @endif
+        >
+            <div
+                ax-load
+                ax-load-src="{{ \Filament\Support\Facades\FilamentAsset::getAlpineComponentSrc('filament-google-charts-widgets', 'arbermustafa/filament-google-charts-widgets') }}"
+                wire:ignore
+                x-data="googleChart({
+                    type: @js($this->getType()),
+                    options: @js($this->getOptions()),
+                    cachedData: @js($this->getCachedData()),
+                })"
+                x-ignore
+            >
                 <google-chart
-                    id='filament-google-charts-{{ $id }}'
-                    type='{{ $this->getType() }}'
-                    options='{{ json_encode($this->getOptions()) }}'
-                    data='{{ json_encode($this->getCachedData()) }}'
-                    x-data = "{
-                        init: function () {
-                            const chart = document.getElementById('filament-google-charts-{{ $id }}')
-
-                            $wire.on('updateChart', async ({ data }) => {
-                                chart.data = data
-                            })
-                        }
-                    }"
-                wire:ignore>
+                    x-ref="googleChart"
+                    id='{{ $chartId }}'
+                ></google-chart>
             </div>
         </div>
-    </x-filament::card>
-</x-filament::widget>
+    </x-filament::section>
+</x-filament-widgets::widget>

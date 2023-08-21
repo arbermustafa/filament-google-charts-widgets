@@ -1,9 +1,2447 @@
-(()=>{var H=window,L=H.ShadowRoot&&(H.ShadyCSS===void 0||H.ShadyCSS.nativeShadow)&&"adoptedStyleSheets"in Document.prototype&&"replace"in CSSStyleSheet.prototype,I=Symbol(),et=new WeakMap,M=class{constructor(t,e,s){if(this._$cssResult$=!0,s!==I)throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");this.cssText=t,this.t=e}get styleSheet(){let t=this.o,e=this.t;if(L&&t===void 0){let s=e!==void 0&&e.length===1;s&&(t=et.get(e)),t===void 0&&((this.o=t=new CSSStyleSheet).replaceSync(this.cssText),s&&et.set(e,t))}return t}toString(){return this.cssText}},st=r=>new M(typeof r=="string"?r:r+"",void 0,I),W=(r,...t)=>{let e=r.length===1?r[0]:t.reduce((s,i,o)=>s+(n=>{if(n._$cssResult$===!0)return n.cssText;if(typeof n=="number")return n;throw Error("Value passed to 'css' function must be a 'css' function result: "+n+". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.")})(i)+r[o+1],r[0]);return new M(e,r,I)},B=(r,t)=>{L?r.adoptedStyleSheets=t.map(e=>e instanceof CSSStyleSheet?e:e.styleSheet):t.forEach(e=>{let s=document.createElement("style"),i=H.litNonce;i!==void 0&&s.setAttribute("nonce",i),s.textContent=e.cssText,r.appendChild(s)})},z=L?r=>r:r=>r instanceof CSSStyleSheet?(t=>{let e="";for(let s of t.cssRules)e+=s.cssText;return st(e)})(r):r;var V,q=window,it=q.trustedTypes,Tt=it?it.emptyScript:"",rt=q.reactiveElementPolyfillSupport,K={toAttribute(r,t){switch(t){case Boolean:r=r?Tt:null;break;case Object:case Array:r=r==null?r:JSON.stringify(r)}return r},fromAttribute(r,t){let e=r;switch(t){case Boolean:e=r!==null;break;case Number:e=r===null?null:Number(r);break;case Object:case Array:try{e=JSON.parse(r)}catch(s){e=null}}return e}},ot=(r,t)=>t!==r&&(t==t||r==r),G={attribute:!0,type:String,converter:K,reflect:!1,hasChanged:ot},g=class extends HTMLElement{constructor(){super(),this._$Ei=new Map,this.isUpdatePending=!1,this.hasUpdated=!1,this._$El=null,this.u()}static addInitializer(t){var e;this.finalize(),((e=this.h)!==null&&e!==void 0?e:this.h=[]).push(t)}static get observedAttributes(){this.finalize();let t=[];return this.elementProperties.forEach((e,s)=>{let i=this._$Ep(s,e);i!==void 0&&(this._$Ev.set(i,s),t.push(i))}),t}static createProperty(t,e=G){if(e.state&&(e.attribute=!1),this.finalize(),this.elementProperties.set(t,e),!e.noAccessor&&!this.prototype.hasOwnProperty(t)){let s=typeof t=="symbol"?Symbol():"__"+t,i=this.getPropertyDescriptor(t,s,e);i!==void 0&&Object.defineProperty(this.prototype,t,i)}}static getPropertyDescriptor(t,e,s){return{get(){return this[e]},set(i){let o=this[t];this[e]=i,this.requestUpdate(t,o,s)},configurable:!0,enumerable:!0}}static getPropertyOptions(t){return this.elementProperties.get(t)||G}static finalize(){if(this.hasOwnProperty("finalized"))return!1;this.finalized=!0;let t=Object.getPrototypeOf(this);if(t.finalize(),t.h!==void 0&&(this.h=[...t.h]),this.elementProperties=new Map(t.elementProperties),this._$Ev=new Map,this.hasOwnProperty("properties")){let e=this.properties,s=[...Object.getOwnPropertyNames(e),...Object.getOwnPropertySymbols(e)];for(let i of s)this.createProperty(i,e[i])}return this.elementStyles=this.finalizeStyles(this.styles),!0}static finalizeStyles(t){let e=[];if(Array.isArray(t)){let s=new Set(t.flat(1/0).reverse());for(let i of s)e.unshift(z(i))}else t!==void 0&&e.push(z(t));return e}static _$Ep(t,e){let s=e.attribute;return s===!1?void 0:typeof s=="string"?s:typeof t=="string"?t.toLowerCase():void 0}u(){var t;this._$E_=new Promise(e=>this.enableUpdating=e),this._$AL=new Map,this._$Eg(),this.requestUpdate(),(t=this.constructor.h)===null||t===void 0||t.forEach(e=>e(this))}addController(t){var e,s;((e=this._$ES)!==null&&e!==void 0?e:this._$ES=[]).push(t),this.renderRoot!==void 0&&this.isConnected&&((s=t.hostConnected)===null||s===void 0||s.call(t))}removeController(t){var e;(e=this._$ES)===null||e===void 0||e.splice(this._$ES.indexOf(t)>>>0,1)}_$Eg(){this.constructor.elementProperties.forEach((t,e)=>{this.hasOwnProperty(e)&&(this._$Ei.set(e,this[e]),delete this[e])})}createRenderRoot(){var t;let e=(t=this.shadowRoot)!==null&&t!==void 0?t:this.attachShadow(this.constructor.shadowRootOptions);return B(e,this.constructor.elementStyles),e}connectedCallback(){var t;this.renderRoot===void 0&&(this.renderRoot=this.createRenderRoot()),this.enableUpdating(!0),(t=this._$ES)===null||t===void 0||t.forEach(e=>{var s;return(s=e.hostConnected)===null||s===void 0?void 0:s.call(e)})}enableUpdating(t){}disconnectedCallback(){var t;(t=this._$ES)===null||t===void 0||t.forEach(e=>{var s;return(s=e.hostDisconnected)===null||s===void 0?void 0:s.call(e)})}attributeChangedCallback(t,e,s){this._$AK(t,s)}_$EO(t,e,s=G){var i;let o=this.constructor._$Ep(t,s);if(o!==void 0&&s.reflect===!0){let n=(((i=s.converter)===null||i===void 0?void 0:i.toAttribute)!==void 0?s.converter:K).toAttribute(e,s.type);this._$El=t,n==null?this.removeAttribute(o):this.setAttribute(o,n),this._$El=null}}_$AK(t,e){var s;let i=this.constructor,o=i._$Ev.get(t);if(o!==void 0&&this._$El!==o){let n=i.getPropertyOptions(o),d=typeof n.converter=="function"?{fromAttribute:n.converter}:((s=n.converter)===null||s===void 0?void 0:s.fromAttribute)!==void 0?n.converter:K;this._$El=o,this[o]=d.fromAttribute(e,n.type),this._$El=null}}requestUpdate(t,e,s){let i=!0;t!==void 0&&(((s=s||this.constructor.getPropertyOptions(t)).hasChanged||ot)(this[t],e)?(this._$AL.has(t)||this._$AL.set(t,e),s.reflect===!0&&this._$El!==t&&(this._$EC===void 0&&(this._$EC=new Map),this._$EC.set(t,s))):i=!1),!this.isUpdatePending&&i&&(this._$E_=this._$Ej())}async _$Ej(){this.isUpdatePending=!0;try{await this._$E_}catch(e){Promise.reject(e)}let t=this.scheduleUpdate();return t!=null&&await t,!this.isUpdatePending}scheduleUpdate(){return this.performUpdate()}performUpdate(){var t;if(!this.isUpdatePending)return;this.hasUpdated,this._$Ei&&(this._$Ei.forEach((i,o)=>this[o]=i),this._$Ei=void 0);let e=!1,s=this._$AL;try{e=this.shouldUpdate(s),e?(this.willUpdate(s),(t=this._$ES)===null||t===void 0||t.forEach(i=>{var o;return(o=i.hostUpdate)===null||o===void 0?void 0:o.call(i)}),this.update(s)):this._$Ek()}catch(i){throw e=!1,this._$Ek(),i}e&&this._$AE(s)}willUpdate(t){}_$AE(t){var e;(e=this._$ES)===null||e===void 0||e.forEach(s=>{var i;return(i=s.hostUpdated)===null||i===void 0?void 0:i.call(s)}),this.hasUpdated||(this.hasUpdated=!0,this.firstUpdated(t)),this.updated(t)}_$Ek(){this._$AL=new Map,this.isUpdatePending=!1}get updateComplete(){return this.getUpdateComplete()}getUpdateComplete(){return this._$E_}shouldUpdate(t){return!0}update(t){this._$EC!==void 0&&(this._$EC.forEach((e,s)=>this._$EO(s,this[s],e)),this._$EC=void 0),this._$Ek()}updated(t){}firstUpdated(t){}};g.finalized=!0,g.elementProperties=new Map,g.elementStyles=[],g.shadowRootOptions={mode:"open"},rt==null||rt({ReactiveElement:g}),((V=q.reactiveElementVersions)!==null&&V!==void 0?V:q.reactiveElementVersions=[]).push("1.6.1");var J,D=window,b=D.trustedTypes,nt=b?b.createPolicy("lit-html",{createHTML:r=>r}):void 0,Z="$lit$",$=`lit$${(Math.random()+"").slice(9)}$`,lt="?"+$,Pt=`<${lt}>`,E=document,P=()=>E.createComment(""),R=r=>r===null||typeof r!="object"&&typeof r!="function",at=Array.isArray,Rt=r=>at(r)||typeof(r==null?void 0:r[Symbol.iterator])=="function",F=`[ 	
-\f\r]`,j=/<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g,ht=/-->/g,dt=/>/g,_=RegExp(`>|${F}(?:([^\\s"'>=/]+)(${F}*=${F}*(?:[^ 	
-\f\r"'\`<>=]|("|')|))|$)`,"g"),ct=/'/g,pt=/"/g,ut=/^(?:script|style|textarea|title)$/i,vt=r=>(t,...e)=>({_$litType$:r,strings:t,values:e}),ft=vt(1),Dt=vt(2),A=Symbol.for("lit-noChange"),p=Symbol.for("lit-nothing"),mt=new WeakMap,w=E.createTreeWalker(E,129,null,!1),jt=(r,t)=>{let e=r.length-1,s=[],i,o=t===2?"<svg>":"",n=j;for(let l=0;l<e;l++){let a=r[l],m,h,c=-1,v=0;for(;v<a.length&&(n.lastIndex=v,h=n.exec(a),h!==null);)v=n.lastIndex,n===j?h[1]==="!--"?n=ht:h[1]!==void 0?n=dt:h[2]!==void 0?(ut.test(h[2])&&(i=RegExp("</"+h[2],"g")),n=_):h[3]!==void 0&&(n=_):n===_?h[0]===">"?(n=i??j,c=-1):h[1]===void 0?c=-2:(c=n.lastIndex-h[2].length,m=h[1],n=h[3]===void 0?_:h[3]==='"'?pt:ct):n===pt||n===ct?n=_:n===ht||n===dt?n=j:(n=_,i=void 0);let k=n===_&&r[l+1].startsWith("/>")?" ":"";o+=n===j?a+Pt:c>=0?(s.push(m),a.slice(0,c)+Z+a.slice(c)+$+k):a+$+(c===-2?(s.push(void 0),l):k)}let d=o+(r[e]||"<?>")+(t===2?"</svg>":"");if(!Array.isArray(r)||!r.hasOwnProperty("raw"))throw Error("invalid template strings array");return[nt!==void 0?nt.createHTML(d):d,s]},C=class{constructor({strings:t,_$litType$:e},s){let i;this.parts=[];let o=0,n=0,d=t.length-1,l=this.parts,[a,m]=jt(t,e);if(this.el=C.createElement(a,s),w.currentNode=this.el.content,e===2){let h=this.el.content,c=h.firstChild;c.remove(),h.append(...c.childNodes)}for(;(i=w.nextNode())!==null&&l.length<d;){if(i.nodeType===1){if(i.hasAttributes()){let h=[];for(let c of i.getAttributeNames())if(c.endsWith(Z)||c.startsWith($)){let v=m[n++];if(h.push(c),v!==void 0){let k=i.getAttribute(v.toLowerCase()+Z).split($),N=/([.?@])?(.*)/.exec(v);l.push({type:1,index:o,name:N[2],strings:k,ctor:N[1]==="."?yt:N[1]==="?"?gt:N[1]==="@"?$t:O})}else l.push({type:6,index:o})}for(let c of h)i.removeAttribute(c)}if(ut.test(i.tagName)){let h=i.textContent.split($),c=h.length-1;if(c>0){i.textContent=b?b.emptyScript:"";for(let v=0;v<c;v++)i.append(h[v],P()),w.nextNode(),l.push({type:2,index:++o});i.append(h[c],P())}}}else if(i.nodeType===8)if(i.data===lt)l.push({type:2,index:o});else{let h=-1;for(;(h=i.data.indexOf($,h+1))!==-1;)l.push({type:7,index:o}),h+=$.length-1}o++}}static createElement(t,e){let s=E.createElement("template");return s.innerHTML=t,s}};function x(r,t,e=r,s){var i,o,n,d;if(t===A)return t;let l=s!==void 0?(i=e._$Co)===null||i===void 0?void 0:i[s]:e._$Cl,a=R(t)?void 0:t._$litDirective$;return(l==null?void 0:l.constructor)!==a&&((o=l==null?void 0:l._$AO)===null||o===void 0||o.call(l,!1),a===void 0?l=void 0:(l=new a(r),l._$AT(r,e,s)),s!==void 0?((n=(d=e)._$Co)!==null&&n!==void 0?n:d._$Co=[])[s]=l:e._$Cl=l),l!==void 0&&(t=x(r,l._$AS(r,t.values),l,s)),t}var _t=class{constructor(t,e){this._$AV=[],this._$AN=void 0,this._$AD=t,this._$AM=e}get parentNode(){return this._$AM.parentNode}get _$AU(){return this._$AM._$AU}u(t){var e;let{el:{content:s},parts:i}=this._$AD,o=((e=t==null?void 0:t.creationScope)!==null&&e!==void 0?e:E).importNode(s,!0);w.currentNode=o;let n=w.nextNode(),d=0,l=0,a=i[0];for(;a!==void 0;){if(d===a.index){let m;a.type===2?m=new T(n,n.nextSibling,this,t):a.type===1?m=new a.ctor(n,a.name,a.strings,this,t):a.type===6&&(m=new At(n,this,t)),this._$AV.push(m),a=i[++l]}d!==(a==null?void 0:a.index)&&(n=w.nextNode(),d++)}return o}v(t){let e=0;for(let s of this._$AV)s!==void 0&&(s.strings!==void 0?(s._$AI(t,s,e),e+=s.strings.length-2):s._$AI(t[e])),e++}},T=class{constructor(t,e,s,i){var o;this.type=2,this._$AH=p,this._$AN=void 0,this._$AA=t,this._$AB=e,this._$AM=s,this.options=i,this._$Cp=(o=i==null?void 0:i.isConnected)===null||o===void 0||o}get _$AU(){var t,e;return(e=(t=this._$AM)===null||t===void 0?void 0:t._$AU)!==null&&e!==void 0?e:this._$Cp}get parentNode(){let t=this._$AA.parentNode,e=this._$AM;return e!==void 0&&(t==null?void 0:t.nodeType)===11&&(t=e.parentNode),t}get startNode(){return this._$AA}get endNode(){return this._$AB}_$AI(t,e=this){t=x(this,t,e),R(t)?t===p||t==null||t===""?(this._$AH!==p&&this._$AR(),this._$AH=p):t!==this._$AH&&t!==A&&this._(t):t._$litType$!==void 0?this.g(t):t.nodeType!==void 0?this.$(t):Rt(t)?this.T(t):this._(t)}k(t){return this._$AA.parentNode.insertBefore(t,this._$AB)}$(t){this._$AH!==t&&(this._$AR(),this._$AH=this.k(t))}_(t){this._$AH!==p&&R(this._$AH)?this._$AA.nextSibling.data=t:this.$(E.createTextNode(t)),this._$AH=t}g(t){var e;let{values:s,_$litType$:i}=t,o=typeof i=="number"?this._$AC(t):(i.el===void 0&&(i.el=C.createElement(i.h,this.options)),i);if(((e=this._$AH)===null||e===void 0?void 0:e._$AD)===o)this._$AH.v(s);else{let n=new _t(o,this),d=n.u(this.options);n.v(s),this.$(d),this._$AH=n}}_$AC(t){let e=mt.get(t.strings);return e===void 0&&mt.set(t.strings,e=new C(t)),e}T(t){at(this._$AH)||(this._$AH=[],this._$AR());let e=this._$AH,s,i=0;for(let o of t)i===e.length?e.push(s=new T(this.k(P()),this.k(P()),this,this.options)):s=e[i],s._$AI(o),i++;i<e.length&&(this._$AR(s&&s._$AB.nextSibling,i),e.length=i)}_$AR(t=this._$AA.nextSibling,e){var s;for((s=this._$AP)===null||s===void 0||s.call(this,!1,!0,e);t&&t!==this._$AB;){let i=t.nextSibling;t.remove(),t=i}}setConnected(t){var e;this._$AM===void 0&&(this._$Cp=t,(e=this._$AP)===null||e===void 0||e.call(this,t))}},O=class{constructor(t,e,s,i,o){this.type=1,this._$AH=p,this._$AN=void 0,this.element=t,this.name=e,this._$AM=i,this.options=o,s.length>2||s[0]!==""||s[1]!==""?(this._$AH=Array(s.length-1).fill(new String),this.strings=s):this._$AH=p}get tagName(){return this.element.tagName}get _$AU(){return this._$AM._$AU}_$AI(t,e=this,s,i){let o=this.strings,n=!1;if(o===void 0)t=x(this,t,e,0),n=!R(t)||t!==this._$AH&&t!==A,n&&(this._$AH=t);else{let d=t,l,a;for(t=o[0],l=0;l<o.length-1;l++)a=x(this,d[s+l],e,l),a===A&&(a=this._$AH[l]),n||(n=!R(a)||a!==this._$AH[l]),a===p?t=p:t!==p&&(t+=(a??"")+o[l+1]),this._$AH[l]=a}n&&!i&&this.j(t)}j(t){t===p?this.element.removeAttribute(this.name):this.element.setAttribute(this.name,t??"")}},yt=class extends O{constructor(){super(...arguments),this.type=3}j(t){this.element[this.name]=t===p?void 0:t}},Ot=b?b.emptyScript:"",gt=class extends O{constructor(){super(...arguments),this.type=4}j(t){t&&t!==p?this.element.setAttribute(this.name,Ot):this.element.removeAttribute(this.name)}},$t=class extends O{constructor(t,e,s,i,o){super(t,e,s,i,o),this.type=5}_$AI(t,e=this){var s;if((t=(s=x(this,t,e,0))!==null&&s!==void 0?s:p)===A)return;let i=this._$AH,o=t===p&&i!==p||t.capture!==i.capture||t.once!==i.once||t.passive!==i.passive,n=t!==p&&(i===p||o);o&&this.element.removeEventListener(this.name,this,i),n&&this.element.addEventListener(this.name,this,t),this._$AH=t}handleEvent(t){var e,s;typeof this._$AH=="function"?this._$AH.call((s=(e=this.options)===null||e===void 0?void 0:e.host)!==null&&s!==void 0?s:this.element,t):this._$AH.handleEvent(t)}},At=class{constructor(t,e,s){this.element=t,this.type=6,this._$AN=void 0,this._$AM=e,this.options=s}get _$AU(){return this._$AM._$AU}_$AI(t){x(this,t)}};var St=D.litHtmlPolyfillSupport;St==null||St(C,T),((J=D.litHtmlVersions)!==null&&J!==void 0?J:D.litHtmlVersions=[]).push("2.7.3");var bt=(r,t,e)=>{var s,i;let o=(s=e==null?void 0:e.renderBefore)!==null&&s!==void 0?s:t,n=o._$litPart$;if(n===void 0){let d=(i=e==null?void 0:e.renderBefore)!==null&&i!==void 0?i:null;o._$litPart$=n=new T(t.insertBefore(P(),d),d,void 0,e??{})}return n._$AI(r),n};var Y,Q;var S=class extends g{constructor(){super(...arguments),this.renderOptions={host:this},this._$Do=void 0}createRenderRoot(){var t,e;let s=super.createRenderRoot();return(t=(e=this.renderOptions).renderBefore)!==null&&t!==void 0||(e.renderBefore=s.firstChild),s}update(t){let e=this.render();this.hasUpdated||(this.renderOptions.isConnected=this.isConnected),super.update(t),this._$Do=bt(e,this.renderRoot,this.renderOptions)}connectedCallback(){var t;super.connectedCallback(),(t=this._$Do)===null||t===void 0||t.setConnected(!0)}disconnectedCallback(){var t;super.disconnectedCallback(),(t=this._$Do)===null||t===void 0||t.setConnected(!1)}render(){return A}};S.finalized=!0,S._$litElement$=!0,(Y=globalThis.litElementHydrateSupport)===null||Y===void 0||Y.call(globalThis,{LitElement:S});var Et=globalThis.litElementPolyfillSupport;Et==null||Et({LitElement:S});((Q=globalThis.litElementVersions)!==null&&Q!==void 0?Q:globalThis.litElementVersions=[]).push("3.3.2");var Ut=(r,t)=>t.kind==="method"&&t.descriptor&&!("value"in t.descriptor)?{...t,finisher(e){e.createProperty(t.key,r)}}:{kind:"field",key:Symbol(),placement:"own",descriptor:{},originalKey:t.key,initializer(){typeof t.initializer=="function"&&(this[t.key]=t.initializer.call(this))},finisher(e){e.createProperty(t.key,r)}};function f(r){return(t,e)=>e!==void 0?((s,i,o)=>{i.constructor.createProperty(o,s)})(r,t,e):Ut(r,t)}var X,ve=((X=window.HTMLSlotElement)===null||X===void 0?void 0:X.prototype.assignedElements)!=null?(r,t)=>r.assignedElements(t):(r,t)=>r.assignedNodes(t).filter(e=>e.nodeType===Node.ELEMENT_NODE);var kt=new Promise((r,t)=>{if(typeof google!="undefined"&&google.charts&&typeof google.charts.load=="function")r();else{let e=document.querySelector('script[src="https://www.gstatic.com/charts/loader.js"]');if(!e){e=document.createElement("script");let s={createScriptURL:i=>"https://www.gstatic.com/charts/loader.js"};typeof trustedTypes!="undefined"&&(s=trustedTypes.createPolicy("google-chart",s)),e.src=s.createScriptURL(""),document.head.appendChild(e)}e.addEventListener("load",r),e.addEventListener("error",t)}});async function wt(r={}){await kt;let{version:t="current",packages:e=["corechart"],language:s=document.documentElement.lang||"en",mapsApiKey:i}=r;return google.charts.load(t,{packages:e,language:s,mapsApiKey:i})}async function tt(r){if(await wt(),r==null)return new google.visualization.DataTable;if(r.getNumberOfRows)return r;if(r.cols)return new google.visualization.DataTable(r);if(r.length>0)return google.visualization.arrayToDataTable(r);throw r.length===0?new Error("Data was empty."):new Error("Data format was not recognized.")}async function Ct(r){return await wt(),new google.visualization.ChartWrapper({container:r})}var y=function(r,t,e,s){var i=arguments.length,o=i<3?t:s===null?s=Object.getOwnPropertyDescriptor(t,e):s,n;if(typeof Reflect=="object"&&typeof Reflect.decorate=="function")o=Reflect.decorate(r,t,e,s);else for(var d=r.length-1;d>=0;d--)(n=r[d])&&(o=(i<3?n(o):i>3?n(t,e,o):n(t,e))||o);return i>3&&o&&Object.defineProperty(t,e,o),o},xt=["ready","select"],Nt={area:"AreaChart",bar:"BarChart","md-bar":"google.charts.Bar",bubble:"BubbleChart",calendar:"Calendar",candlestick:"CandlestickChart",column:"ColumnChart",combo:"ComboChart",gantt:"Gantt",gauge:"Gauge",geo:"GeoChart",histogram:"Histogram",line:"LineChart","md-line":"google.charts.Line",org:"OrgChart",pie:"PieChart",sankey:"Sankey",scatter:"ScatterChart","md-scatter":"google.charts.Scatter","stepped-area":"SteppedAreaChart",table:"Table",timeline:"Timeline",treemap:"TreeMap",wordtree:"WordTree"},u=class extends S{constructor(){super(...arguments);this.type="column",this.events=[],this.options=void 0,this.cols=void 0,this.rows=void 0,this.data=void 0,this.view=void 0,this.selection=void 0,this.drawn=!1,this._data=void 0,this.chartWrapper=null,this.redrawTimeoutId=void 0}render(){return ft`
+var Mr = Object.create
+var yt = Object.defineProperty
+var jr = Object.getOwnPropertyDescriptor
+var Lr = Object.getOwnPropertyNames
+var kr = Object.getPrototypeOf,
+    qr = Object.prototype.hasOwnProperty
+var u = (r, e) => () => (e || r((e = { exports: {} }).exports, e), e.exports)
+var zr = (r, e, t, i) => {
+    if ((e && typeof e == 'object') || typeof e == 'function')
+        for (let n of Lr(e))
+            !qr.call(r, n) &&
+                n !== t &&
+                yt(r, n, {
+                    get: () => e[n],
+                    enumerable: !(i = jr(e, n)) || i.enumerable,
+                })
+    return r
+}
+var p = (r, e, t) => (
+    (t = r != null ? Mr(kr(r)) : {}),
+    zr(
+        e || !r || !r.__esModule
+            ? yt(t, 'default', { value: r, enumerable: !0 })
+            : t,
+        r,
+    )
+)
+var y = u(() => {
+    'use strict'
+})
+var B = u((X) => {
+    'use strict'
+    Object.defineProperty(X, '__esModule', { value: !0 })
+    X.ensureTokenIsValid = X.secretToken = void 0
+    y()
+    X.secretToken = {}
+    function Yr(r) {}
+    X.ensureTokenIsValid = Yr
+})
+var me = u((j) => {
+    'use strict'
+    Object.defineProperty(j, '__esModule', { value: !0 })
+    j.TEST_ONLY = j.getTrustedTypesPolicy = j.getTrustedTypes = void 0
+    var ve = 'google#safe'
+    function Jr() {
+        if (typeof window < 'u') return window.trustedTypes
+    }
+    function kt() {
+        var r
+        return ve !== '' && (r = Jr()) !== null && r !== void 0 ? r : null
+    }
+    j.getTrustedTypes = kt
+    var ae
+    function Kr() {
+        var r, e
+        if (ae === void 0)
+            try {
+                ae =
+                    (e =
+                        (r = kt()) === null || r === void 0
+                            ? void 0
+                            : r.createPolicy(ve, {
+                                  createHTML: function (t) {
+                                      return t
+                                  },
+                                  createScript: function (t) {
+                                      return t
+                                  },
+                                  createScriptURL: function (t) {
+                                      return t
+                                  },
+                              })) !== null && e !== void 0
+                        ? e
+                        : null
+            } catch {
+                ae = null
+            }
+        return ae
+    }
+    j.getTrustedTypesPolicy = Kr
+    j.TEST_ONLY = {
+        resetDefaults: function () {
+            ;(ae = void 0), (ve = 'google#safe')
+        },
+        setTrustedTypesPolicyName: function (r) {
+            ve = r
+        },
+    }
+})
+var T = u(($) => {
+    'use strict'
+    Object.defineProperty($, '__esModule', { value: !0 })
+    $.unwrapResourceUrl =
+        $.isResourceUrl =
+        $.createResourceUrl =
+        $.TrustedResourceUrl =
+            void 0
+    y()
+    var qt = B(),
+        ot = me(),
+        ye = (function () {
+            function r(e, t) {
+                ;(0, qt.ensureTokenIsValid)(t),
+                    (this.privateDoNotAccessOrElseWrappedResourceUrl = e)
+            }
+            return (
+                (r.prototype.toString = function () {
+                    return this.privateDoNotAccessOrElseWrappedResourceUrl.toString()
+                }),
+                r
+            )
+        })(),
+        nt = typeof window !== void 0 ? window.TrustedScriptURL : void 0
+    $.TrustedResourceUrl = nt ?? ye
+    function Xr(r) {
+        var e,
+            t = r,
+            i =
+                (e = (0, ot.getTrustedTypesPolicy)()) === null || e === void 0
+                    ? void 0
+                    : e.createScriptURL(t)
+        return i ?? new ye(t, qt.secretToken)
+    }
+    $.createResourceUrl = Xr
+    function Zr(r) {
+        var e
+        return (
+            ((e = (0, ot.getTrustedTypes)()) === null || e === void 0
+                ? void 0
+                : e.isScriptURL(r)) || r instanceof ye
+        )
+    }
+    $.isResourceUrl = Zr
+    function Qr(r) {
+        var e
+        if (
+            !((e = (0, ot.getTrustedTypes)()) === null || e === void 0) &&
+            e.isScriptURL(r)
+        )
+            return r
+        if (r instanceof ye) return r.privateDoNotAccessOrElseWrappedResourceUrl
+        var t = ''
+        throw new Error(t)
+    }
+    $.unwrapResourceUrl = Qr
+})
+var ge = u((S) => {
+    'use strict'
+    Object.defineProperty(S, '__esModule', { value: !0 })
+    S.unwrapScript =
+        S.isScript =
+        S.EMPTY_SCRIPT =
+        S.createScript =
+        S.SafeScript =
+            void 0
+    y()
+    var zt = B(),
+        _e = me(),
+        Se = (function () {
+            function r(e, t) {
+                ;(0, zt.ensureTokenIsValid)(t),
+                    (this.privateDoNotAccessOrElseWrappedScript = e)
+            }
+            return (
+                (r.prototype.toString = function () {
+                    return this.privateDoNotAccessOrElseWrappedScript.toString()
+                }),
+                r
+            )
+        })()
+    function Dt(r, e) {
+        return e ?? new Se(r, zt.secretToken)
+    }
+    var st = typeof window !== void 0 ? window.TrustedScript : void 0
+    S.SafeScript = st ?? Se
+    function ei(r) {
+        var e,
+            t = r
+        return Dt(
+            t,
+            (e = (0, _e.getTrustedTypesPolicy)()) === null || e === void 0
+                ? void 0
+                : e.createScript(t),
+        )
+    }
+    S.createScript = ei
+    S.EMPTY_SCRIPT = (function () {
+        var r
+        return Dt(
+            '',
+            (r = (0, _e.getTrustedTypes)()) === null || r === void 0
+                ? void 0
+                : r.emptyScript,
+        )
+    })()
+    function ti(r) {
+        var e
+        return (
+            ((e = (0, _e.getTrustedTypes)()) === null || e === void 0
+                ? void 0
+                : e.isScript(r)) || r instanceof Se
+        )
+    }
+    S.isScript = ti
+    function ri(r) {
+        var e
+        if (
+            !((e = (0, _e.getTrustedTypes)()) === null || e === void 0) &&
+            e.isScript(r)
+        )
+            return r
+        if (r instanceof Se) return r.privateDoNotAccessOrElseWrappedScript
+        var t = ''
+        throw new Error(t)
+    }
+    S.unwrapScript = ri
+})
+var It = u((we) => {
+    'use strict'
+    Object.defineProperty(we, '__esModule', { value: !0 })
+    we.assertIsTemplateObject = void 0
+    function ii(r, e, t) {
+        if (
+            !Array.isArray(r) ||
+            !Array.isArray(r.raw) ||
+            (!e && r.length !== 1)
+        )
+            throw new TypeError(t)
+    }
+    we.assertIsTemplateObject = ii
+})
+var Vt = u((C) => {
+    'use strict'
+    Object.defineProperty(C, '__esModule', { value: !0 })
+    C.objectUrlFromScript =
+        C.replaceFragment =
+        C.appendParams =
+        C.trustedResourceUrl =
+            void 0
+    y()
+    var G = T(),
+        ni = ge(),
+        Go = It()
+    function oi(r) {
+        for (var e = [], t = 1; t < arguments.length; t++)
+            e[t - 1] = arguments[t]
+        if (e.length === 0) return (0, G.createResourceUrl)(r[0])
+        for (var i = r[0].toLowerCase(), n = [r[0]], o = 0; o < e.length; o++)
+            n.push(encodeURIComponent(e[o])), n.push(r[o + 1])
+        return (0, G.createResourceUrl)(n.join(''))
+    }
+    C.trustedResourceUrl = oi
+    function si(r, e) {
+        var t = (0, G.unwrapResourceUrl)(r).toString()
+        if (/#/.test(t)) {
+            var i = ''
+            throw new Error(i)
+        }
+        var n = /\?/.test(t) ? '&' : '?'
+        return (
+            e.forEach(function (o, s) {
+                for (
+                    var l = o instanceof Array ? o : [o], a = 0;
+                    a < l.length;
+                    a++
+                ) {
+                    var c = l[a]
+                    c != null &&
+                        ((t +=
+                            n +
+                            encodeURIComponent(s) +
+                            '=' +
+                            encodeURIComponent(String(c))),
+                        (n = '&'))
+                }
+            }),
+            (0, G.createResourceUrl)(t)
+        )
+    }
+    C.appendParams = si
+    var ai = /[^#]*/
+    function li(r, e) {
+        var t = (0, G.unwrapResourceUrl)(r).toString()
+        return (0, G.createResourceUrl)(ai.exec(t)[0] + '#' + e)
+    }
+    C.replaceFragment = li
+    function ui(r) {
+        var e = (0, ni.unwrapScript)(r).toString(),
+            t = new Blob([e], { type: 'text/javascript' })
+        return (0, G.createResourceUrl)(URL.createObjectURL(t))
+    }
+    C.objectUrlFromScript = ui
+})
+var Gt = u((O) => {
+    'use strict'
+    var ci =
+        (O && O.__extends) ||
+        (function () {
+            var r = function (e, t) {
+                return (
+                    (r =
+                        Object.setPrototypeOf ||
+                        ({ __proto__: [] } instanceof Array &&
+                            function (i, n) {
+                                i.__proto__ = n
+                            }) ||
+                        function (i, n) {
+                            for (var o in n)
+                                Object.prototype.hasOwnProperty.call(n, o) &&
+                                    (i[o] = n[o])
+                        }),
+                    r(e, t)
+                )
+            }
+            return function (e, t) {
+                if (typeof t != 'function' && t !== null)
+                    throw new TypeError(
+                        'Class extends value ' +
+                            String(t) +
+                            ' is not a constructor or null',
+                    )
+                r(e, t)
+                function i() {
+                    this.constructor = e
+                }
+                e.prototype =
+                    t === null
+                        ? Object.create(t)
+                        : ((i.prototype = t.prototype), new i())
+            }
+        })()
+    Object.defineProperty(O, '__esModule', { value: !0 })
+    O.unwrapAttributePrefix =
+        O.createAttributePrefix =
+        O.SafeAttributePrefix =
+            void 0
+    y()
+    var Wt = B(),
+        Ft = (function () {
+            function r() {}
+            return r
+        })()
+    O.SafeAttributePrefix = Ft
+    var Bt = (function (r) {
+        ci(e, r)
+        function e(t, i) {
+            var n = r.call(this) || this
+            return (
+                (0, Wt.ensureTokenIsValid)(i),
+                (n.privateDoNotAccessOrElseWrappedAttrPrefix = t),
+                n
+            )
+        }
+        return (
+            (e.prototype.toString = function () {
+                return this.privateDoNotAccessOrElseWrappedAttrPrefix
+            }),
+            e
+        )
+    })(Ft)
+    function pi(r) {
+        return new Bt(r, Wt.secretToken)
+    }
+    O.createAttributePrefix = pi
+    function di(r) {
+        if (r instanceof Bt) return r.privateDoNotAccessOrElseWrappedAttrPrefix
+        var e = ''
+        throw new Error(e)
+    }
+    O.unwrapAttributePrefix = di
+})
+var Z = u((g) => {
+    'use strict'
+    Object.defineProperty(g, '__esModule', { value: !0 })
+    g.unwrapHtml = g.isHtml = g.EMPTY_HTML = g.createHtml = g.SafeHtml = void 0
+    y()
+    var Yt = B(),
+        Ae = me(),
+        Ee = (function () {
+            function r(e, t) {
+                ;(0, Yt.ensureTokenIsValid)(t),
+                    (this.privateDoNotAccessOrElseWrappedHtml = e)
+            }
+            return (
+                (r.prototype.toString = function () {
+                    return this.privateDoNotAccessOrElseWrappedHtml.toString()
+                }),
+                r
+            )
+        })()
+    function Jt(r, e) {
+        return e ?? new Ee(r, Yt.secretToken)
+    }
+    var at = typeof window !== void 0 ? window.TrustedHTML : void 0
+    g.SafeHtml = at ?? Ee
+    function hi(r) {
+        var e,
+            t = r
+        return Jt(
+            t,
+            (e = (0, Ae.getTrustedTypesPolicy)()) === null || e === void 0
+                ? void 0
+                : e.createHTML(t),
+        )
+    }
+    g.createHtml = hi
+    g.EMPTY_HTML = (function () {
+        var r
+        return Jt(
+            '',
+            (r = (0, Ae.getTrustedTypes)()) === null || r === void 0
+                ? void 0
+                : r.emptyHTML,
+        )
+    })()
+    function fi(r) {
+        var e
+        return (
+            ((e = (0, Ae.getTrustedTypes)()) === null || e === void 0
+                ? void 0
+                : e.isHTML(r)) || r instanceof Ee
+        )
+    }
+    g.isHtml = fi
+    function vi(r) {
+        var e
+        if (
+            !((e = (0, Ae.getTrustedTypes)()) === null || e === void 0) &&
+            e.isHTML(r)
+        )
+            return r
+        if (r instanceof Ee) return r.privateDoNotAccessOrElseWrappedHtml
+        var t = ''
+        throw new Error(t)
+    }
+    g.unwrapHtml = vi
+})
+var Zt = u((w) => {
+    'use strict'
+    var mi =
+        (w && w.__extends) ||
+        (function () {
+            var r = function (e, t) {
+                return (
+                    (r =
+                        Object.setPrototypeOf ||
+                        ({ __proto__: [] } instanceof Array &&
+                            function (i, n) {
+                                i.__proto__ = n
+                            }) ||
+                        function (i, n) {
+                            for (var o in n)
+                                Object.prototype.hasOwnProperty.call(n, o) &&
+                                    (i[o] = n[o])
+                        }),
+                    r(e, t)
+                )
+            }
+            return function (e, t) {
+                if (typeof t != 'function' && t !== null)
+                    throw new TypeError(
+                        'Class extends value ' +
+                            String(t) +
+                            ' is not a constructor or null',
+                    )
+                r(e, t)
+                function i() {
+                    this.constructor = e
+                }
+                e.prototype =
+                    t === null
+                        ? Object.create(t)
+                        : ((i.prototype = t.prototype), new i())
+            }
+        })()
+    Object.defineProperty(w, '__esModule', { value: !0 })
+    w.unwrapStyle = w.isStyle = w.createStyle = w.SafeStyle = void 0
+    y()
+    var Kt = B(),
+        Xt = (function () {
+            function r() {}
+            return r
+        })()
+    w.SafeStyle = Xt
+    var lt = (function (r) {
+        mi(e, r)
+        function e(t, i) {
+            var n = r.call(this) || this
+            return (
+                (0, Kt.ensureTokenIsValid)(i),
+                (n.privateDoNotAccessOrElseWrappedStyle = t),
+                n
+            )
+        }
+        return (
+            (e.prototype.toString = function () {
+                return this.privateDoNotAccessOrElseWrappedStyle
+            }),
+            e
+        )
+    })(Xt)
+    function yi(r) {
+        return new lt(r, Kt.secretToken)
+    }
+    w.createStyle = yi
+    function _i(r) {
+        return r instanceof lt
+    }
+    w.isStyle = _i
+    function Si(r) {
+        if (r instanceof lt) return r.privateDoNotAccessOrElseWrappedStyle
+        var e = ''
+        throw new Error(e)
+    }
+    w.unwrapStyle = Si
+})
+var tr = u((A) => {
+    'use strict'
+    var gi =
+        (A && A.__extends) ||
+        (function () {
+            var r = function (e, t) {
+                return (
+                    (r =
+                        Object.setPrototypeOf ||
+                        ({ __proto__: [] } instanceof Array &&
+                            function (i, n) {
+                                i.__proto__ = n
+                            }) ||
+                        function (i, n) {
+                            for (var o in n)
+                                Object.prototype.hasOwnProperty.call(n, o) &&
+                                    (i[o] = n[o])
+                        }),
+                    r(e, t)
+                )
+            }
+            return function (e, t) {
+                if (typeof t != 'function' && t !== null)
+                    throw new TypeError(
+                        'Class extends value ' +
+                            String(t) +
+                            ' is not a constructor or null',
+                    )
+                r(e, t)
+                function i() {
+                    this.constructor = e
+                }
+                e.prototype =
+                    t === null
+                        ? Object.create(t)
+                        : ((i.prototype = t.prototype), new i())
+            }
+        })()
+    Object.defineProperty(A, '__esModule', { value: !0 })
+    A.unwrapStyleSheet =
+        A.isStyleSheet =
+        A.createStyleSheet =
+        A.SafeStyleSheet =
+            void 0
+    y()
+    var Qt = B(),
+        er = (function () {
+            function r() {}
+            return r
+        })()
+    A.SafeStyleSheet = er
+    var ut = (function (r) {
+        gi(e, r)
+        function e(t, i) {
+            var n = r.call(this) || this
+            return (
+                (0, Qt.ensureTokenIsValid)(i),
+                (n.privateDoNotAccessOrElseWrappedStyleSheet = t),
+                n
+            )
+        }
+        return (
+            (e.prototype.toString = function () {
+                return this.privateDoNotAccessOrElseWrappedStyleSheet
+            }),
+            e
+        )
+    })(er)
+    function wi(r) {
+        return new ut(r, Qt.secretToken)
+    }
+    A.createStyleSheet = wi
+    function Ai(r) {
+        return r instanceof ut
+    }
+    A.isStyleSheet = Ai
+    function Ei(r) {
+        if (r instanceof ut) return r.privateDoNotAccessOrElseWrappedStyleSheet
+        var e = ''
+        throw new Error(e)
+    }
+    A.unwrapStyleSheet = Ei
+})
+var P = u((U) => {
+    'use strict'
+    Object.defineProperty(U, '__esModule', { value: !0 })
+    U.restrictivelySanitizeUrl =
+        U.unwrapUrlOrSanitize =
+        U.sanitizeJavascriptUrl =
+        U.extractScheme =
+            void 0
+    y()
+    function ct(r) {
+        var e
+        try {
+            e = new URL(r)
+        } catch {
+            return 'https:'
+        }
+        return e.protocol
+    }
+    U.extractScheme = ct
+    var bi = ['data:', 'http:', 'https:', 'mailto:', 'ftp:']
+    function rr(r) {
+        var e = ct(r)
+        if (e !== 'javascript:') return r
+    }
+    U.sanitizeJavascriptUrl = rr
+    function xi(r) {
+        return rr(r)
+    }
+    U.unwrapUrlOrSanitize = xi
+    function $i(r) {
+        var e = ct(r)
+        return e !== void 0 && bi.indexOf(e.toLowerCase()) !== -1
+            ? r
+            : 'about:invalid#zClosurez'
+    }
+    U.restrictivelySanitizeUrl = $i
+})
+var ir = u((be) => {
+    'use strict'
+    Object.defineProperty(be, '__esModule', { value: !0 })
+    be.setHref = void 0
+    var Ti = P()
+    function Ci(r, e) {
+        var t = (0, Ti.unwrapUrlOrSanitize)(e)
+        t !== void 0 && (r.href = t)
+    }
+    be.setHref = Ci
+})
+var nr = u((xe) => {
+    'use strict'
+    Object.defineProperty(xe, '__esModule', { value: !0 })
+    xe.setHref = void 0
+    var Oi = P()
+    function Ui(r, e) {
+        var t = (0, Oi.unwrapUrlOrSanitize)(e)
+        t !== void 0 && (r.href = t)
+    }
+    xe.setHref = Ui
+})
+var or = u(($e) => {
+    'use strict'
+    Object.defineProperty($e, '__esModule', { value: !0 })
+    $e.setHref = void 0
+    var Pi = T()
+    function Hi(r, e) {
+        r.href = (0, Pi.unwrapResourceUrl)(e)
+    }
+    $e.setHref = Hi
+})
+var sr = u((Te) => {
+    'use strict'
+    Object.defineProperty(Te, '__esModule', { value: !0 })
+    Te.setFormaction = void 0
+    var Ri = P()
+    function Ni(r, e) {
+        var t = (0, Ri.unwrapUrlOrSanitize)(e)
+        t !== void 0 && (r.formAction = t)
+    }
+    Te.setFormaction = Ni
+})
+var lr = u((v) => {
+    'use strict'
+    var Mi =
+            (v && v.__read) ||
+            function (r, e) {
+                var t = typeof Symbol == 'function' && r[Symbol.iterator]
+                if (!t) return r
+                var i = t.call(r),
+                    n,
+                    o = [],
+                    s
+                try {
+                    for (; (e === void 0 || e-- > 0) && !(n = i.next()).done; )
+                        o.push(n.value)
+                } catch (l) {
+                    s = { error: l }
+                } finally {
+                    try {
+                        n && !n.done && (t = i.return) && t.call(i)
+                    } finally {
+                        if (s) throw s.error
+                    }
+                }
+                return o
+            },
+        ji =
+            (v && v.__spreadArray) ||
+            function (r, e, t) {
+                if (t || arguments.length === 2)
+                    for (var i = 0, n = e.length, o; i < n; i++)
+                        (o || !(i in e)) &&
+                            (o || (o = Array.prototype.slice.call(e, 0, i)),
+                            (o[i] = e[i]))
+                return r.concat(o || Array.prototype.slice.call(e))
+            }
+    Object.defineProperty(v, '__esModule', { value: !0 })
+    v.setPrefixedAttribute =
+        v.buildPrefixedAttributeSetter =
+        v.insertAdjacentHtml =
+        v.setCssText =
+        v.setOuterHtml =
+        v.setInnerHtml =
+            void 0
+    y()
+    var Li = Gt(),
+        pt = Z(),
+        ki = Zt()
+    function qi(r, e) {
+        Wi(r) && dt(r), (r.innerHTML = (0, pt.unwrapHtml)(e))
+    }
+    v.setInnerHtml = qi
+    function zi(r, e) {
+        var t = r.parentElement
+        t !== null && dt(t), (r.outerHTML = (0, pt.unwrapHtml)(e))
+    }
+    v.setOuterHtml = zi
+    function Di(r, e) {
+        r.style.cssText = (0, ki.unwrapStyle)(e)
+    }
+    v.setCssText = Di
+    function Ii(r, e, t) {
+        var i = e === 'beforebegin' || e === 'afterend' ? r.parentElement : r
+        i !== null && dt(i), r.insertAdjacentHTML(e, (0, pt.unwrapHtml)(t))
+    }
+    v.insertAdjacentHtml = Ii
+    function Vi(r) {
+        for (var e = [], t = 1; t < arguments.length; t++)
+            e[t - 1] = arguments[t]
+        var i = ji([r], Mi(e), !1)
+        return function (n, o, s) {
+            ar(i, n, o, s)
+        }
+    }
+    v.buildPrefixedAttributeSetter = Vi
+    function ar(r, e, t, i) {
+        if (r.length === 0) {
+            var n = ''
+            throw new Error(n)
+        }
+        var o = r.map(function (l) {
+                return (0, Li.unwrapAttributePrefix)(l)
+            }),
+            s = t.toLowerCase()
+        if (
+            o.every(function (l) {
+                return s.indexOf(l) !== 0
+            })
+        )
+            throw new Error(
+                'Attribute "'.concat(
+                    t,
+                    '" does not match any of the allowed prefixes.',
+                ),
+            )
+        e.setAttribute(t, i)
+    }
+    v.setPrefixedAttribute = ar
+    function dt(r) {
+        var e = ''
+        if (r.tagName.toLowerCase() === 'script') throw new Error(e)
+        if (r.tagName.toLowerCase() === 'style') throw new Error(e)
+    }
+    function Wi(r) {
+        return r.tagName !== void 0
+    }
+})
+var ur = u((Ce) => {
+    'use strict'
+    Object.defineProperty(Ce, '__esModule', { value: !0 })
+    Ce.setSrc = void 0
+    var Fi = T()
+    function Bi(r, e) {
+        r.src = (0, Fi.unwrapResourceUrl)(e)
+    }
+    Ce.setSrc = Bi
+})
+var cr = u((Oe) => {
+    'use strict'
+    Object.defineProperty(Oe, '__esModule', { value: !0 })
+    Oe.setAction = void 0
+    var Gi = P()
+    function Yi(r, e) {
+        var t = (0, Gi.unwrapUrlOrSanitize)(e)
+        t !== void 0 && (r.action = t)
+    }
+    Oe.setAction = Yi
+})
+var pr = u((ee) => {
+    'use strict'
+    Object.defineProperty(ee, '__esModule', { value: !0 })
+    ee.setSrcdoc = ee.setSrc = void 0
+    var Ji = Z(),
+        Ki = T()
+    function Xi(r, e) {
+        r.src = (0, Ki.unwrapResourceUrl)(e).toString()
+    }
+    ee.setSrc = Xi
+    function Zi(r, e) {
+        r.srcdoc = (0, Ji.unwrapHtml)(e)
+    }
+    ee.setSrcdoc = Zi
+})
+var dr = u((Ue) => {
+    'use strict'
+    Object.defineProperty(Ue, '__esModule', { value: !0 })
+    Ue.setFormaction = void 0
+    var Qi = P()
+    function en(r, e) {
+        var t = (0, Qi.unwrapUrlOrSanitize)(e)
+        t !== void 0 && (r.formAction = t)
+    }
+    Ue.setFormaction = en
+})
+var fr = u((Pe) => {
+    'use strict'
+    Object.defineProperty(Pe, '__esModule', { value: !0 })
+    Pe.setHrefAndRel = void 0
+    var tn = P(),
+        hr = T(),
+        rn = [
+            'alternate',
+            'author',
+            'bookmark',
+            'canonical',
+            'cite',
+            'help',
+            'icon',
+            'license',
+            'next',
+            'prefetch',
+            'dns-prefetch',
+            'prerender',
+            'preconnect',
+            'preload',
+            'prev',
+            'search',
+            'subresource',
+        ]
+    function nn(r, e, t) {
+        if ((0, hr.isResourceUrl)(e))
+            r.href = (0, hr.unwrapResourceUrl)(e).toString()
+        else {
+            if (rn.indexOf(t) === -1)
+                throw new Error(
+                    'TrustedResourceUrl href attribute required with rel="'.concat(
+                        t,
+                        '"',
+                    ),
+                )
+            var i = (0, tn.unwrapUrlOrSanitize)(e)
+            if (i === void 0) return
+            r.href = i
+        }
+        r.rel = t
+    }
+    Pe.setHrefAndRel = nn
+})
+var vr = u((He) => {
+    'use strict'
+    Object.defineProperty(He, '__esModule', { value: !0 })
+    He.setData = void 0
+    var on = T()
+    function sn(r, e) {
+        r.data = (0, on.unwrapResourceUrl)(e)
+    }
+    He.setData = sn
+})
+var yr = u((te) => {
+    'use strict'
+    Object.defineProperty(te, '__esModule', { value: !0 })
+    te.setSrc = te.setTextContent = void 0
+    var an = T(),
+        ln = ge()
+    function un(r) {
+        var e,
+            t = r.document,
+            i =
+                (e = t.querySelector) === null || e === void 0
+                    ? void 0
+                    : e.call(t, 'script[nonce]')
+        return (i && (i.nonce || i.getAttribute('nonce'))) || ''
+    }
+    function mr(r) {
+        var e = r.ownerDocument && r.ownerDocument.defaultView,
+            t = un(e || window)
+        t && r.setAttribute('nonce', t)
+    }
+    function cn(r, e) {
+        ;(r.textContent = (0, ln.unwrapScript)(e)), mr(r)
+    }
+    te.setTextContent = cn
+    function pn(r, e) {
+        ;(r.src = (0, an.unwrapResourceUrl)(e)), mr(r)
+    }
+    te.setSrc = pn
+})
+var _r = u((Re) => {
+    'use strict'
+    Object.defineProperty(Re, '__esModule', { value: !0 })
+    Re.setTextContent = void 0
+    var dn = tr()
+    function hn(r, e) {
+        r.textContent = (0, dn.unwrapStyleSheet)(e)
+    }
+    Re.setTextContent = hn
+})
+var Sr = u((Ne) => {
+    'use strict'
+    Object.defineProperty(Ne, '__esModule', { value: !0 })
+    Ne.setHref = void 0
+    y()
+    var fn = P()
+    function vn(r, e) {
+        var t = (0, fn.extractScheme)(e)
+        if (t === 'javascript:' || t === 'data:') {
+            if (!1) var i
+            return
+        }
+        r.setAttribute('href', e)
+    }
+    Ne.setHref = vn
+})
+var gr = u((L) => {
+    'use strict'
+    Object.defineProperty(L, '__esModule', { value: !0 })
+    L.execCommandInsertHtml = L.execCommand = L.write = void 0
+    var ht = Z()
+    function mn(r, e) {
+        r.write((0, ht.unwrapHtml)(e))
+    }
+    L.write = mn
+    function yn(r, e, t) {
+        var i = String(e),
+            n = t
+        return (
+            i.toLowerCase() === 'inserthtml' && (n = (0, ht.unwrapHtml)(t)),
+            r.execCommand(i, !1, n)
+        )
+    }
+    L.execCommand = yn
+    function _n(r, e) {
+        return r.execCommand('insertHTML', !1, (0, ht.unwrapHtml)(e))
+    }
+    L.execCommandInsertHtml = _n
+})
+var Ar = u((k) => {
+    'use strict'
+    Object.defineProperty(k, '__esModule', { value: !0 })
+    k.parseFromString = k.parseXml = k.parseHtml = void 0
+    y()
+    var wr = Z()
+    function Sn(r, e) {
+        return ft(r, e, 'text/html')
+    }
+    k.parseHtml = Sn
+    function gn(r, e) {
+        for (
+            var t = ft(r, (0, wr.createHtml)(e), 'text/xml'),
+                i = document.createNodeIterator(
+                    t,
+                    NodeFilter.SHOW_ALL,
+                    null,
+                    !1,
+                ),
+                n;
+            (n = i.nextNode());
+
+        )
+            if (n instanceof HTMLElement || n instanceof SVGElement) {
+                var o = 'unsafe XML'
+                throw new Error(o)
+            }
+        return t
+    }
+    k.parseXml = gn
+    function ft(r, e, t) {
+        return r.parseFromString((0, wr.unwrapHtml)(e), t)
+    }
+    k.parseFromString = ft
+})
+var Er = u((Me) => {
+    'use strict'
+    Object.defineProperty(Me, '__esModule', { value: !0 })
+    Me.globalEval = void 0
+    var wn = ge()
+    function An(r, e) {
+        var t = (0, wn.unwrapScript)(e),
+            i = r.eval(t)
+        return i === t && (i = r.eval(t.toString())), i
+    }
+    Me.globalEval = An
+})
+var br = u((q) => {
+    'use strict'
+    Object.defineProperty(q, '__esModule', { value: !0 })
+    q.assign = q.replace = q.setHref = void 0
+    var vt = P()
+    function En(r, e) {
+        var t = (0, vt.unwrapUrlOrSanitize)(e)
+        t !== void 0 && (r.href = t)
+    }
+    q.setHref = En
+    function bn(r, e) {
+        var t = (0, vt.unwrapUrlOrSanitize)(e)
+        t !== void 0 && r.replace(t)
+    }
+    q.replace = bn
+    function xn(r, e) {
+        var t = (0, vt.unwrapUrlOrSanitize)(e)
+        t !== void 0 && r.assign(t)
+    }
+    q.assign = xn
+})
+var xr = u((je) => {
+    'use strict'
+    Object.defineProperty(je, '__esModule', { value: !0 })
+    je.createContextualFragment = void 0
+    var $n = Z()
+    function Tn(r, e) {
+        return r.createContextualFragment((0, $n.unwrapHtml)(e))
+    }
+    je.createContextualFragment = Tn
+})
+var $r = u((Le) => {
+    'use strict'
+    Object.defineProperty(Le, '__esModule', { value: !0 })
+    Le.register = void 0
+    var Cn = T()
+    function On(r, e, t) {
+        return r.register((0, Cn.unwrapResourceUrl)(e), t)
+    }
+    Le.register = On
+})
+var Tr = u((ke) => {
+    'use strict'
+    Object.defineProperty(ke, '__esModule', { value: !0 })
+    ke.objectUrlFromSafeSource = void 0
+    function Un(r) {
+        var e = r.match(/^([^;]+)(?:;\w+=(?:\w+|"[\w;,= ]+"))*$/i)
+        return e?.length === 2 && (Pn(e[1]) || Hn(e[1]) || Rn(e[1]))
+    }
+    function Pn(r) {
+        return /^image\/(?:bmp|gif|jpeg|jpg|png|tiff|webp|x-icon|heic|heif)$/i.test(
+            r,
+        )
+    }
+    function Hn(r) {
+        return /^video\/(?:mpeg|mp4|ogg|webm|x-matroska|quicktime|x-ms-wmv)$/i.test(
+            r,
+        )
+    }
+    function Rn(r) {
+        return /^audio\/(?:3gpp2|3gpp|aac|L16|midi|mp3|mp4|mpeg|oga|ogg|opus|x-m4a|x-matroska|x-wav|wav|webm)$/i.test(
+            r,
+        )
+    }
+    function Nn(r) {
+        if (typeof MediaSource < 'u' && r instanceof MediaSource)
+            return URL.createObjectURL(r)
+        var e = r
+        if (!Un(e.type)) {
+            var t = ''
+            throw new Error(t)
+        }
+        return URL.createObjectURL(e)
+    }
+    ke.objectUrlFromSafeSource = Nn
+})
+var Cr = u((qe) => {
+    'use strict'
+    Object.defineProperty(qe, '__esModule', { value: !0 })
+    qe.open = void 0
+    var Mn = P()
+    function jn(r, e, t, i) {
+        var n = (0, Mn.unwrapUrlOrSanitize)(e)
+        return n !== void 0 ? r.open(n, t, i) : null
+    }
+    qe.open = jn
+})
+var Or = u((E) => {
+    'use strict'
+    var Ln =
+            (E && E.__read) ||
+            function (r, e) {
+                var t = typeof Symbol == 'function' && r[Symbol.iterator]
+                if (!t) return r
+                var i = t.call(r),
+                    n,
+                    o = [],
+                    s
+                try {
+                    for (; (e === void 0 || e-- > 0) && !(n = i.next()).done; )
+                        o.push(n.value)
+                } catch (l) {
+                    s = { error: l }
+                } finally {
+                    try {
+                        n && !n.done && (t = i.return) && t.call(i)
+                    } finally {
+                        if (s) throw s.error
+                    }
+                }
+                return o
+            },
+        kn =
+            (E && E.__spreadArray) ||
+            function (r, e, t) {
+                if (t || arguments.length === 2)
+                    for (var i = 0, n = e.length, o; i < n; i++)
+                        (o || !(i in e)) &&
+                            (o || (o = Array.prototype.slice.call(e, 0, i)),
+                            (o[i] = e[i]))
+                return r.concat(o || Array.prototype.slice.call(e))
+            }
+    Object.defineProperty(E, '__esModule', { value: !0 })
+    E.importScripts = E.createShared = E.create = void 0
+    var mt = T()
+    function qn(r, e) {
+        return new Worker((0, mt.unwrapResourceUrl)(r), e)
+    }
+    E.create = qn
+    function zn(r, e) {
+        return new SharedWorker((0, mt.unwrapResourceUrl)(r), e)
+    }
+    E.createShared = zn
+    function Dn(r) {
+        for (var e = [], t = 1; t < arguments.length; t++)
+            e[t - 1] = arguments[t]
+        r.importScripts.apply(
+            r,
+            kn(
+                [],
+                Ln(
+                    e.map(function (i) {
+                        return (0, mt.unwrapResourceUrl)(i)
+                    }),
+                ),
+                !1,
+            ),
+        )
+    }
+    E.importScripts = Dn
+})
+var ce = window,
+    pe =
+        ce.ShadowRoot &&
+        (ce.ShadyCSS === void 0 || ce.ShadyCSS.nativeShadow) &&
+        'adoptedStyleSheets' in Document.prototype &&
+        'replace' in CSSStyleSheet.prototype,
+    ze = Symbol(),
+    _t = new WeakMap(),
+    re = class {
+        constructor(e, t, i) {
+            if (((this._$cssResult$ = !0), i !== ze))
+                throw Error(
+                    'CSSResult is not constructable. Use `unsafeCSS` or `css` instead.',
+                )
+            ;(this.cssText = e), (this.t = t)
+        }
+        get styleSheet() {
+            let e = this.o,
+                t = this.t
+            if (pe && e === void 0) {
+                let i = t !== void 0 && t.length === 1
+                i && (e = _t.get(t)),
+                    e === void 0 &&
+                        ((this.o = e = new CSSStyleSheet()).replaceSync(
+                            this.cssText,
+                        ),
+                        i && _t.set(t, e))
+            }
+            return e
+        }
+        toString() {
+            return this.cssText
+        }
+    },
+    St = (r) => new re(typeof r == 'string' ? r : r + '', void 0, ze),
+    De = (r, ...e) => {
+        let t =
+            r.length === 1
+                ? r[0]
+                : e.reduce(
+                      (i, n, o) =>
+                          i +
+                          ((s) => {
+                              if (s._$cssResult$ === !0) return s.cssText
+                              if (typeof s == 'number') return s
+                              throw Error(
+                                  "Value passed to 'css' function must be a 'css' function result: " +
+                                      s +
+                                      ". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.",
+                              )
+                          })(n) +
+                          r[o + 1],
+                      r[0],
+                  )
+        return new re(t, r, ze)
+    },
+    Ie = (r, e) => {
+        pe
+            ? (r.adoptedStyleSheets = e.map((t) =>
+                  t instanceof CSSStyleSheet ? t : t.styleSheet,
+              ))
+            : e.forEach((t) => {
+                  let i = document.createElement('style'),
+                      n = ce.litNonce
+                  n !== void 0 && i.setAttribute('nonce', n),
+                      (i.textContent = t.cssText),
+                      r.appendChild(i)
+              })
+    },
+    de = pe
+        ? (r) => r
+        : (r) =>
+              r instanceof CSSStyleSheet
+                  ? ((e) => {
+                        let t = ''
+                        for (let i of e.cssRules) t += i.cssText
+                        return St(t)
+                    })(r)
+                  : r
+var Ve,
+    he = window,
+    gt = he.trustedTypes,
+    Dr = gt ? gt.emptyScript : '',
+    wt = he.reactiveElementPolyfillSupport,
+    Fe = {
+        toAttribute(r, e) {
+            switch (e) {
+                case Boolean:
+                    r = r ? Dr : null
+                    break
+                case Object:
+                case Array:
+                    r = r == null ? r : JSON.stringify(r)
+            }
+            return r
+        },
+        fromAttribute(r, e) {
+            let t = r
+            switch (e) {
+                case Boolean:
+                    t = r !== null
+                    break
+                case Number:
+                    t = r === null ? null : Number(r)
+                    break
+                case Object:
+                case Array:
+                    try {
+                        t = JSON.parse(r)
+                    } catch {
+                        t = null
+                    }
+            }
+            return t
+        },
+    },
+    At = (r, e) => e !== r && (e == e || r == r),
+    We = {
+        attribute: !0,
+        type: String,
+        converter: Fe,
+        reflect: !1,
+        hasChanged: At,
+    },
+    Be = 'finalized',
+    H = class extends HTMLElement {
+        constructor() {
+            super(),
+                (this._$Ei = new Map()),
+                (this.isUpdatePending = !1),
+                (this.hasUpdated = !1),
+                (this._$El = null),
+                this._$Eu()
+        }
+        static addInitializer(e) {
+            var t
+            this.finalize(),
+                ((t = this.h) !== null && t !== void 0
+                    ? t
+                    : (this.h = [])
+                ).push(e)
+        }
+        static get observedAttributes() {
+            this.finalize()
+            let e = []
+            return (
+                this.elementProperties.forEach((t, i) => {
+                    let n = this._$Ep(i, t)
+                    n !== void 0 && (this._$Ev.set(n, i), e.push(n))
+                }),
+                e
+            )
+        }
+        static createProperty(e, t = We) {
+            if (
+                (t.state && (t.attribute = !1),
+                this.finalize(),
+                this.elementProperties.set(e, t),
+                !t.noAccessor && !this.prototype.hasOwnProperty(e))
+            ) {
+                let i = typeof e == 'symbol' ? Symbol() : '__' + e,
+                    n = this.getPropertyDescriptor(e, i, t)
+                n !== void 0 && Object.defineProperty(this.prototype, e, n)
+            }
+        }
+        static getPropertyDescriptor(e, t, i) {
+            return {
+                get() {
+                    return this[t]
+                },
+                set(n) {
+                    let o = this[e]
+                    ;(this[t] = n), this.requestUpdate(e, o, i)
+                },
+                configurable: !0,
+                enumerable: !0,
+            }
+        }
+        static getPropertyOptions(e) {
+            return this.elementProperties.get(e) || We
+        }
+        static finalize() {
+            if (this.hasOwnProperty(Be)) return !1
+            this[Be] = !0
+            let e = Object.getPrototypeOf(this)
+            if (
+                (e.finalize(),
+                e.h !== void 0 && (this.h = [...e.h]),
+                (this.elementProperties = new Map(e.elementProperties)),
+                (this._$Ev = new Map()),
+                this.hasOwnProperty('properties'))
+            ) {
+                let t = this.properties,
+                    i = [
+                        ...Object.getOwnPropertyNames(t),
+                        ...Object.getOwnPropertySymbols(t),
+                    ]
+                for (let n of i) this.createProperty(n, t[n])
+            }
+            return (this.elementStyles = this.finalizeStyles(this.styles)), !0
+        }
+        static finalizeStyles(e) {
+            let t = []
+            if (Array.isArray(e)) {
+                let i = new Set(e.flat(1 / 0).reverse())
+                for (let n of i) t.unshift(de(n))
+            } else e !== void 0 && t.push(de(e))
+            return t
+        }
+        static _$Ep(e, t) {
+            let i = t.attribute
+            return i === !1
+                ? void 0
+                : typeof i == 'string'
+                ? i
+                : typeof e == 'string'
+                ? e.toLowerCase()
+                : void 0
+        }
+        _$Eu() {
+            var e
+            ;(this._$E_ = new Promise((t) => (this.enableUpdating = t))),
+                (this._$AL = new Map()),
+                this._$Eg(),
+                this.requestUpdate(),
+                (e = this.constructor.h) === null ||
+                    e === void 0 ||
+                    e.forEach((t) => t(this))
+        }
+        addController(e) {
+            var t, i
+            ;((t = this._$ES) !== null && t !== void 0
+                ? t
+                : (this._$ES = [])
+            ).push(e),
+                this.renderRoot !== void 0 &&
+                    this.isConnected &&
+                    ((i = e.hostConnected) === null ||
+                        i === void 0 ||
+                        i.call(e))
+        }
+        removeController(e) {
+            var t
+            ;(t = this._$ES) === null ||
+                t === void 0 ||
+                t.splice(this._$ES.indexOf(e) >>> 0, 1)
+        }
+        _$Eg() {
+            this.constructor.elementProperties.forEach((e, t) => {
+                this.hasOwnProperty(t) &&
+                    (this._$Ei.set(t, this[t]), delete this[t])
+            })
+        }
+        createRenderRoot() {
+            var e
+            let t =
+                (e = this.shadowRoot) !== null && e !== void 0
+                    ? e
+                    : this.attachShadow(this.constructor.shadowRootOptions)
+            return Ie(t, this.constructor.elementStyles), t
+        }
+        connectedCallback() {
+            var e
+            this.renderRoot === void 0 &&
+                (this.renderRoot = this.createRenderRoot()),
+                this.enableUpdating(!0),
+                (e = this._$ES) === null ||
+                    e === void 0 ||
+                    e.forEach((t) => {
+                        var i
+                        return (i = t.hostConnected) === null || i === void 0
+                            ? void 0
+                            : i.call(t)
+                    })
+        }
+        enableUpdating(e) {}
+        disconnectedCallback() {
+            var e
+            ;(e = this._$ES) === null ||
+                e === void 0 ||
+                e.forEach((t) => {
+                    var i
+                    return (i = t.hostDisconnected) === null || i === void 0
+                        ? void 0
+                        : i.call(t)
+                })
+        }
+        attributeChangedCallback(e, t, i) {
+            this._$AK(e, i)
+        }
+        _$EO(e, t, i = We) {
+            var n
+            let o = this.constructor._$Ep(e, i)
+            if (o !== void 0 && i.reflect === !0) {
+                let s = (
+                    ((n = i.converter) === null || n === void 0
+                        ? void 0
+                        : n.toAttribute) !== void 0
+                        ? i.converter
+                        : Fe
+                ).toAttribute(t, i.type)
+                ;(this._$El = e),
+                    s == null
+                        ? this.removeAttribute(o)
+                        : this.setAttribute(o, s),
+                    (this._$El = null)
+            }
+        }
+        _$AK(e, t) {
+            var i
+            let n = this.constructor,
+                o = n._$Ev.get(e)
+            if (o !== void 0 && this._$El !== o) {
+                let s = n.getPropertyOptions(o),
+                    l =
+                        typeof s.converter == 'function'
+                            ? { fromAttribute: s.converter }
+                            : ((i = s.converter) === null || i === void 0
+                                  ? void 0
+                                  : i.fromAttribute) !== void 0
+                            ? s.converter
+                            : Fe
+                ;(this._$El = o),
+                    (this[o] = l.fromAttribute(t, s.type)),
+                    (this._$El = null)
+            }
+        }
+        requestUpdate(e, t, i) {
+            let n = !0
+            e !== void 0 &&
+                ((
+                    (i = i || this.constructor.getPropertyOptions(e))
+                        .hasChanged || At
+                )(this[e], t)
+                    ? (this._$AL.has(e) || this._$AL.set(e, t),
+                      i.reflect === !0 &&
+                          this._$El !== e &&
+                          (this._$EC === void 0 && (this._$EC = new Map()),
+                          this._$EC.set(e, i)))
+                    : (n = !1)),
+                !this.isUpdatePending && n && (this._$E_ = this._$Ej())
+        }
+        async _$Ej() {
+            this.isUpdatePending = !0
+            try {
+                await this._$E_
+            } catch (t) {
+                Promise.reject(t)
+            }
+            let e = this.scheduleUpdate()
+            return e != null && (await e), !this.isUpdatePending
+        }
+        scheduleUpdate() {
+            return this.performUpdate()
+        }
+        performUpdate() {
+            var e
+            if (!this.isUpdatePending) return
+            this.hasUpdated,
+                this._$Ei &&
+                    (this._$Ei.forEach((n, o) => (this[o] = n)),
+                    (this._$Ei = void 0))
+            let t = !1,
+                i = this._$AL
+            try {
+                ;(t = this.shouldUpdate(i)),
+                    t
+                        ? (this.willUpdate(i),
+                          (e = this._$ES) === null ||
+                              e === void 0 ||
+                              e.forEach((n) => {
+                                  var o
+                                  return (o = n.hostUpdate) === null ||
+                                      o === void 0
+                                      ? void 0
+                                      : o.call(n)
+                              }),
+                          this.update(i))
+                        : this._$Ek()
+            } catch (n) {
+                throw ((t = !1), this._$Ek(), n)
+            }
+            t && this._$AE(i)
+        }
+        willUpdate(e) {}
+        _$AE(e) {
+            var t
+            ;(t = this._$ES) === null ||
+                t === void 0 ||
+                t.forEach((i) => {
+                    var n
+                    return (n = i.hostUpdated) === null || n === void 0
+                        ? void 0
+                        : n.call(i)
+                }),
+                this.hasUpdated ||
+                    ((this.hasUpdated = !0), this.firstUpdated(e)),
+                this.updated(e)
+        }
+        _$Ek() {
+            ;(this._$AL = new Map()), (this.isUpdatePending = !1)
+        }
+        get updateComplete() {
+            return this.getUpdateComplete()
+        }
+        getUpdateComplete() {
+            return this._$E_
+        }
+        shouldUpdate(e) {
+            return !0
+        }
+        update(e) {
+            this._$EC !== void 0 &&
+                (this._$EC.forEach((t, i) => this._$EO(i, this[i], t)),
+                (this._$EC = void 0)),
+                this._$Ek()
+        }
+        updated(e) {}
+        firstUpdated(e) {}
+    }
+;(H[Be] = !0),
+    (H.elementProperties = new Map()),
+    (H.elementStyles = []),
+    (H.shadowRootOptions = { mode: 'open' }),
+    wt?.({ ReactiveElement: H }),
+    ((Ve = he.reactiveElementVersions) !== null && Ve !== void 0
+        ? Ve
+        : (he.reactiveElementVersions = [])
+    ).push('1.6.3')
+var Ge,
+    fe = window,
+    Y = fe.trustedTypes,
+    Et = Y ? Y.createPolicy('lit-html', { createHTML: (r) => r }) : void 0,
+    Je = '$lit$',
+    N = `lit$${(Math.random() + '').slice(9)}$`,
+    Ut = '?' + N,
+    Ir = `<${Ut}>`,
+    I = document,
+    ne = () => I.createComment(''),
+    oe = (r) => r === null || (typeof r != 'object' && typeof r != 'function'),
+    Pt = Array.isArray,
+    Vr = (r) => Pt(r) || typeof r?.[Symbol.iterator] == 'function',
+    Ye = `[ 	
+\f\r]`,
+    ie = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g,
+    bt = /-->/g,
+    xt = />/g,
+    z = RegExp(
+        `>|${Ye}(?:([^\\s"'>=/]+)(${Ye}*=${Ye}*(?:[^ 	
+\f\r"'\`<>=]|("|')|))|$)`,
+        'g',
+    ),
+    $t = /'/g,
+    Tt = /"/g,
+    Ht = /^(?:script|style|textarea|title)$/i,
+    Rt =
+        (r) =>
+        (e, ...t) => ({ _$litType$: r, strings: e, values: t }),
+    Nt = Rt(1),
+    Kn = Rt(2),
+    V = Symbol.for('lit-noChange'),
+    f = Symbol.for('lit-nothing'),
+    Ct = new WeakMap(),
+    D = I.createTreeWalker(I, 129, null, !1)
+function Mt(r, e) {
+    if (!Array.isArray(r) || !r.hasOwnProperty('raw'))
+        throw Error('invalid template strings array')
+    return Et !== void 0 ? Et.createHTML(e) : e
+}
+var Wr = (r, e) => {
+        let t = r.length - 1,
+            i = [],
+            n,
+            o = e === 2 ? '<svg>' : '',
+            s = ie
+        for (let l = 0; l < t; l++) {
+            let a = r[l],
+                c,
+                d,
+                h = -1,
+                m = 0
+            for (
+                ;
+                m < a.length &&
+                ((s.lastIndex = m), (d = s.exec(a)), d !== null);
+
+            )
+                (m = s.lastIndex),
+                    s === ie
+                        ? d[1] === '!--'
+                            ? (s = bt)
+                            : d[1] !== void 0
+                            ? (s = xt)
+                            : d[2] !== void 0
+                            ? (Ht.test(d[2]) && (n = RegExp('</' + d[2], 'g')),
+                              (s = z))
+                            : d[3] !== void 0 && (s = z)
+                        : s === z
+                        ? d[0] === '>'
+                            ? ((s = n ?? ie), (h = -1))
+                            : d[1] === void 0
+                            ? (h = -2)
+                            : ((h = s.lastIndex - d[2].length),
+                              (c = d[1]),
+                              (s =
+                                  d[3] === void 0 ? z : d[3] === '"' ? Tt : $t))
+                        : s === Tt || s === $t
+                        ? (s = z)
+                        : s === bt || s === xt
+                        ? (s = ie)
+                        : ((s = z), (n = void 0))
+            let x = s === z && r[l + 1].startsWith('/>') ? ' ' : ''
+            o +=
+                s === ie
+                    ? a + Ir
+                    : h >= 0
+                    ? (i.push(c), a.slice(0, h) + Je + a.slice(h) + N + x)
+                    : a + N + (h === -2 ? (i.push(void 0), l) : x)
+        }
+        return [Mt(r, o + (r[t] || '<?>') + (e === 2 ? '</svg>' : '')), i]
+    },
+    W = class {
+        constructor({ strings: e, _$litType$: t }, i) {
+            let n
+            this.parts = []
+            let o = 0,
+                s = 0,
+                l = e.length - 1,
+                a = this.parts,
+                [c, d] = Wr(e, t)
+            if (
+                ((this.el = W.createElement(c, i)),
+                (D.currentNode = this.el.content),
+                t === 2)
+            ) {
+                let h = this.el.content,
+                    m = h.firstChild
+                m.remove(), h.append(...m.childNodes)
+            }
+            for (; (n = D.nextNode()) !== null && a.length < l; ) {
+                if (n.nodeType === 1) {
+                    if (n.hasAttributes()) {
+                        let h = []
+                        for (let m of n.getAttributeNames())
+                            if (m.endsWith(Je) || m.startsWith(N)) {
+                                let x = d[s++]
+                                if ((h.push(m), x !== void 0)) {
+                                    let Nr = n
+                                            .getAttribute(x.toLowerCase() + Je)
+                                            .split(N),
+                                        ue = /([.?@])?(.*)/.exec(x)
+                                    a.push({
+                                        type: 1,
+                                        index: o,
+                                        name: ue[2],
+                                        strings: Nr,
+                                        ctor:
+                                            ue[1] === '.'
+                                                ? Xe
+                                                : ue[1] === '?'
+                                                ? Ze
+                                                : ue[1] === '@'
+                                                ? Qe
+                                                : K,
+                                    })
+                                } else a.push({ type: 6, index: o })
+                            }
+                        for (let m of h) n.removeAttribute(m)
+                    }
+                    if (Ht.test(n.tagName)) {
+                        let h = n.textContent.split(N),
+                            m = h.length - 1
+                        if (m > 0) {
+                            n.textContent = Y ? Y.emptyScript : ''
+                            for (let x = 0; x < m; x++)
+                                n.append(h[x], ne()),
+                                    D.nextNode(),
+                                    a.push({ type: 2, index: ++o })
+                            n.append(h[m], ne())
+                        }
+                    }
+                } else if (n.nodeType === 8)
+                    if (n.data === Ut) a.push({ type: 2, index: o })
+                    else {
+                        let h = -1
+                        for (; (h = n.data.indexOf(N, h + 1)) !== -1; )
+                            a.push({ type: 7, index: o }), (h += N.length - 1)
+                    }
+                o++
+            }
+        }
+        static createElement(e, t) {
+            let i = I.createElement('template')
+            return (i.innerHTML = e), i
+        }
+    }
+function J(r, e, t = r, i) {
+    var n, o, s, l
+    if (e === V) return e
+    let a =
+            i !== void 0
+                ? (n = t._$Co) === null || n === void 0
+                    ? void 0
+                    : n[i]
+                : t._$Cl,
+        c = oe(e) ? void 0 : e._$litDirective$
+    return (
+        a?.constructor !== c &&
+            ((o = a?._$AO) === null || o === void 0 || o.call(a, !1),
+            c === void 0 ? (a = void 0) : ((a = new c(r)), a._$AT(r, t, i)),
+            i !== void 0
+                ? (((s = (l = t)._$Co) !== null && s !== void 0
+                      ? s
+                      : (l._$Co = []))[i] = a)
+                : (t._$Cl = a)),
+        a !== void 0 && (e = J(r, a._$AS(r, e.values), a, i)),
+        e
+    )
+}
+var Ke = class {
+        constructor(e, t) {
+            ;(this._$AV = []),
+                (this._$AN = void 0),
+                (this._$AD = e),
+                (this._$AM = t)
+        }
+        get parentNode() {
+            return this._$AM.parentNode
+        }
+        get _$AU() {
+            return this._$AM._$AU
+        }
+        u(e) {
+            var t
+            let {
+                    el: { content: i },
+                    parts: n,
+                } = this._$AD,
+                o = (
+                    (t = e?.creationScope) !== null && t !== void 0 ? t : I
+                ).importNode(i, !0)
+            D.currentNode = o
+            let s = D.nextNode(),
+                l = 0,
+                a = 0,
+                c = n[0]
+            for (; c !== void 0; ) {
+                if (l === c.index) {
+                    let d
+                    c.type === 2
+                        ? (d = new F(s, s.nextSibling, this, e))
+                        : c.type === 1
+                        ? (d = new c.ctor(s, c.name, c.strings, this, e))
+                        : c.type === 6 && (d = new et(s, this, e)),
+                        this._$AV.push(d),
+                        (c = n[++a])
+                }
+                l !== c?.index && ((s = D.nextNode()), l++)
+            }
+            return (D.currentNode = I), o
+        }
+        v(e) {
+            let t = 0
+            for (let i of this._$AV)
+                i !== void 0 &&
+                    (i.strings !== void 0
+                        ? (i._$AI(e, i, t), (t += i.strings.length - 2))
+                        : i._$AI(e[t])),
+                    t++
+        }
+    },
+    F = class {
+        constructor(e, t, i, n) {
+            var o
+            ;(this.type = 2),
+                (this._$AH = f),
+                (this._$AN = void 0),
+                (this._$AA = e),
+                (this._$AB = t),
+                (this._$AM = i),
+                (this.options = n),
+                (this._$Cp = (o = n?.isConnected) === null || o === void 0 || o)
+        }
+        get _$AU() {
+            var e, t
+            return (t =
+                (e = this._$AM) === null || e === void 0 ? void 0 : e._$AU) !==
+                null && t !== void 0
+                ? t
+                : this._$Cp
+        }
+        get parentNode() {
+            let e = this._$AA.parentNode,
+                t = this._$AM
+            return t !== void 0 && e?.nodeType === 11 && (e = t.parentNode), e
+        }
+        get startNode() {
+            return this._$AA
+        }
+        get endNode() {
+            return this._$AB
+        }
+        _$AI(e, t = this) {
+            ;(e = J(this, e, t)),
+                oe(e)
+                    ? e === f || e == null || e === ''
+                        ? (this._$AH !== f && this._$AR(), (this._$AH = f))
+                        : e !== this._$AH && e !== V && this._(e)
+                    : e._$litType$ !== void 0
+                    ? this.g(e)
+                    : e.nodeType !== void 0
+                    ? this.$(e)
+                    : Vr(e)
+                    ? this.T(e)
+                    : this._(e)
+        }
+        k(e) {
+            return this._$AA.parentNode.insertBefore(e, this._$AB)
+        }
+        $(e) {
+            this._$AH !== e && (this._$AR(), (this._$AH = this.k(e)))
+        }
+        _(e) {
+            this._$AH !== f && oe(this._$AH)
+                ? (this._$AA.nextSibling.data = e)
+                : this.$(I.createTextNode(e)),
+                (this._$AH = e)
+        }
+        g(e) {
+            var t
+            let { values: i, _$litType$: n } = e,
+                o =
+                    typeof n == 'number'
+                        ? this._$AC(e)
+                        : (n.el === void 0 &&
+                              (n.el = W.createElement(
+                                  Mt(n.h, n.h[0]),
+                                  this.options,
+                              )),
+                          n)
+            if (
+                ((t = this._$AH) === null || t === void 0 ? void 0 : t._$AD) ===
+                o
+            )
+                this._$AH.v(i)
+            else {
+                let s = new Ke(o, this),
+                    l = s.u(this.options)
+                s.v(i), this.$(l), (this._$AH = s)
+            }
+        }
+        _$AC(e) {
+            let t = Ct.get(e.strings)
+            return t === void 0 && Ct.set(e.strings, (t = new W(e))), t
+        }
+        T(e) {
+            Pt(this._$AH) || ((this._$AH = []), this._$AR())
+            let t = this._$AH,
+                i,
+                n = 0
+            for (let o of e)
+                n === t.length
+                    ? t.push(
+                          (i = new F(
+                              this.k(ne()),
+                              this.k(ne()),
+                              this,
+                              this.options,
+                          )),
+                      )
+                    : (i = t[n]),
+                    i._$AI(o),
+                    n++
+            n < t.length &&
+                (this._$AR(i && i._$AB.nextSibling, n), (t.length = n))
+        }
+        _$AR(e = this._$AA.nextSibling, t) {
+            var i
+            for (
+                (i = this._$AP) === null ||
+                i === void 0 ||
+                i.call(this, !1, !0, t);
+                e && e !== this._$AB;
+
+            ) {
+                let n = e.nextSibling
+                e.remove(), (e = n)
+            }
+        }
+        setConnected(e) {
+            var t
+            this._$AM === void 0 &&
+                ((this._$Cp = e),
+                (t = this._$AP) === null || t === void 0 || t.call(this, e))
+        }
+    },
+    K = class {
+        constructor(e, t, i, n, o) {
+            ;(this.type = 1),
+                (this._$AH = f),
+                (this._$AN = void 0),
+                (this.element = e),
+                (this.name = t),
+                (this._$AM = n),
+                (this.options = o),
+                i.length > 2 || i[0] !== '' || i[1] !== ''
+                    ? ((this._$AH = Array(i.length - 1).fill(new String())),
+                      (this.strings = i))
+                    : (this._$AH = f)
+        }
+        get tagName() {
+            return this.element.tagName
+        }
+        get _$AU() {
+            return this._$AM._$AU
+        }
+        _$AI(e, t = this, i, n) {
+            let o = this.strings,
+                s = !1
+            if (o === void 0)
+                (e = J(this, e, t, 0)),
+                    (s = !oe(e) || (e !== this._$AH && e !== V)),
+                    s && (this._$AH = e)
+            else {
+                let l = e,
+                    a,
+                    c
+                for (e = o[0], a = 0; a < o.length - 1; a++)
+                    (c = J(this, l[i + a], t, a)),
+                        c === V && (c = this._$AH[a]),
+                        s || (s = !oe(c) || c !== this._$AH[a]),
+                        c === f
+                            ? (e = f)
+                            : e !== f && (e += (c ?? '') + o[a + 1]),
+                        (this._$AH[a] = c)
+            }
+            s && !n && this.j(e)
+        }
+        j(e) {
+            e === f
+                ? this.element.removeAttribute(this.name)
+                : this.element.setAttribute(this.name, e ?? '')
+        }
+    },
+    Xe = class extends K {
+        constructor() {
+            super(...arguments), (this.type = 3)
+        }
+        j(e) {
+            this.element[this.name] = e === f ? void 0 : e
+        }
+    },
+    Fr = Y ? Y.emptyScript : '',
+    Ze = class extends K {
+        constructor() {
+            super(...arguments), (this.type = 4)
+        }
+        j(e) {
+            e && e !== f
+                ? this.element.setAttribute(this.name, Fr)
+                : this.element.removeAttribute(this.name)
+        }
+    },
+    Qe = class extends K {
+        constructor(e, t, i, n, o) {
+            super(e, t, i, n, o), (this.type = 5)
+        }
+        _$AI(e, t = this) {
+            var i
+            if (
+                (e =
+                    (i = J(this, e, t, 0)) !== null && i !== void 0 ? i : f) ===
+                V
+            )
+                return
+            let n = this._$AH,
+                o =
+                    (e === f && n !== f) ||
+                    e.capture !== n.capture ||
+                    e.once !== n.once ||
+                    e.passive !== n.passive,
+                s = e !== f && (n === f || o)
+            o && this.element.removeEventListener(this.name, this, n),
+                s && this.element.addEventListener(this.name, this, e),
+                (this._$AH = e)
+        }
+        handleEvent(e) {
+            var t, i
+            typeof this._$AH == 'function'
+                ? this._$AH.call(
+                      (i =
+                          (t = this.options) === null || t === void 0
+                              ? void 0
+                              : t.host) !== null && i !== void 0
+                          ? i
+                          : this.element,
+                      e,
+                  )
+                : this._$AH.handleEvent(e)
+        }
+    },
+    et = class {
+        constructor(e, t, i) {
+            ;(this.element = e),
+                (this.type = 6),
+                (this._$AN = void 0),
+                (this._$AM = t),
+                (this.options = i)
+        }
+        get _$AU() {
+            return this._$AM._$AU
+        }
+        _$AI(e) {
+            J(this, e)
+        }
+    }
+var Ot = fe.litHtmlPolyfillSupport
+Ot?.(W, F),
+    ((Ge = fe.litHtmlVersions) !== null && Ge !== void 0
+        ? Ge
+        : (fe.litHtmlVersions = [])
+    ).push('2.8.0')
+var jt = (r, e, t) => {
+    var i, n
+    let o = (i = t?.renderBefore) !== null && i !== void 0 ? i : e,
+        s = o._$litPart$
+    if (s === void 0) {
+        let l = (n = t?.renderBefore) !== null && n !== void 0 ? n : null
+        o._$litPart$ = s = new F(e.insertBefore(ne(), l), l, void 0, t ?? {})
+    }
+    return s._$AI(r), s
+}
+var tt, rt
+var M = class extends H {
+    constructor() {
+        super(...arguments),
+            (this.renderOptions = { host: this }),
+            (this._$Do = void 0)
+    }
+    createRenderRoot() {
+        var e, t
+        let i = super.createRenderRoot()
+        return (
+            ((e = (t = this.renderOptions).renderBefore) !== null &&
+                e !== void 0) ||
+                (t.renderBefore = i.firstChild),
+            i
+        )
+    }
+    update(e) {
+        let t = this.render()
+        this.hasUpdated || (this.renderOptions.isConnected = this.isConnected),
+            super.update(e),
+            (this._$Do = jt(t, this.renderRoot, this.renderOptions))
+    }
+    connectedCallback() {
+        var e
+        super.connectedCallback(),
+            (e = this._$Do) === null || e === void 0 || e.setConnected(!0)
+    }
+    disconnectedCallback() {
+        var e
+        super.disconnectedCallback(),
+            (e = this._$Do) === null || e === void 0 || e.setConnected(!1)
+    }
+    render() {
+        return V
+    }
+}
+;(M.finalized = !0),
+    (M._$litElement$ = !0),
+    (tt = globalThis.litElementHydrateSupport) === null ||
+        tt === void 0 ||
+        tt.call(globalThis, { LitElement: M })
+var Lt = globalThis.litElementPolyfillSupport
+Lt?.({ LitElement: M })
+;((rt = globalThis.litElementVersions) !== null && rt !== void 0
+    ? rt
+    : (globalThis.litElementVersions = [])
+).push('3.3.3')
+var Br = (r, e) =>
+        e.kind === 'method' && e.descriptor && !('value' in e.descriptor)
+            ? {
+                  ...e,
+                  finisher(t) {
+                      t.createProperty(e.key, r)
+                  },
+              }
+            : {
+                  kind: 'field',
+                  key: Symbol(),
+                  placement: 'own',
+                  descriptor: {},
+                  originalKey: e.key,
+                  initializer() {
+                      typeof e.initializer == 'function' &&
+                          (this[e.key] = e.initializer.call(this))
+                  },
+                  finisher(t) {
+                      t.createProperty(e.key, r)
+                  },
+              },
+    Gr = (r, e, t) => {
+        e.constructor.createProperty(t, r)
+    }
+function b(r) {
+    return (e, t) => (t !== void 0 ? Gr(r, e, t) : Br(r, e))
+}
+var it,
+    bo =
+        ((it = window.HTMLSlotElement) === null || it === void 0
+            ? void 0
+            : it.prototype.assignedElements) != null
+            ? (r, e) => r.assignedElements(e)
+            : (r, e) =>
+                  r
+                      .assignedNodes(e)
+                      .filter((t) => t.nodeType === Node.ELEMENT_NODE)
+var Q = p(Vt(), 1)
+var xs = p(ir(), 1),
+    $s = p(nr(), 1),
+    Ts = p(or(), 1),
+    Cs = p(sr(), 1),
+    Os = p(lr(), 1),
+    Us = p(ur(), 1),
+    Ps = p(cr(), 1),
+    Hs = p(pr(), 1),
+    Rs = p(dr(), 1),
+    Ns = p(fr(), 1),
+    Ms = p(vr(), 1),
+    Ur = p(yr(), 1),
+    js = p(_r(), 1),
+    Ls = p(Sr(), 1),
+    ks = p(gr(), 1),
+    qs = p(Ar(), 1),
+    zs = p(Er(), 1),
+    Ds = p(br(), 1),
+    Is = p(xr(), 1),
+    Vs = p($r(), 1),
+    Ws = p(Tr(), 1),
+    Fs = p(Cr(), 1),
+    Bs = p(Or(), 1)
+var In = new Promise((r, e) => {
+    if (
+        typeof google < 'u' &&
+        google.charts &&
+        typeof google.charts.load == 'function'
+    )
+        r()
+    else {
+        let t = document.querySelector(
+            'script[src="https://www.gstatic.com/charts/loader.js"]',
+        )
+        t ||
+            ((t = document.createElement('script')),
+            Ur.setSrc(
+                t,
+                Q.trustedResourceUrl`https://www.gstatic.com/charts/loader.js`,
+            ),
+            document.head.appendChild(t)),
+            t.addEventListener('load', r),
+            t.addEventListener('error', e)
+    }
+})
+async function Pr(r = {}) {
+    await In
+    let {
+        version: e = 'current',
+        packages: t = ['corechart'],
+        language: i = document.documentElement.lang || 'en',
+        mapsApiKey: n,
+    } = r
+    return google.charts.load(e, { packages: t, language: i, mapsApiKey: n })
+}
+async function le(r) {
+    if ((await Pr(), r == null)) return new google.visualization.DataTable()
+    if (r.getNumberOfRows) return r
+    if (r.cols) return new google.visualization.DataTable(r)
+    if (r.length > 0) return google.visualization.arrayToDataTable(r)
+    throw r.length === 0
+        ? new Error('Data was empty.')
+        : new Error('Data format was not recognized.')
+}
+async function Hr(r) {
+    return await Pr(), new google.visualization.ChartWrapper({ container: r })
+}
+var R = function (r, e, t, i) {
+        var n = arguments.length,
+            o =
+                n < 3
+                    ? e
+                    : i === null
+                    ? (i = Object.getOwnPropertyDescriptor(e, t))
+                    : i,
+            s
+        if (typeof Reflect == 'object' && typeof Reflect.decorate == 'function')
+            o = Reflect.decorate(r, e, t, i)
+        else
+            for (var l = r.length - 1; l >= 0; l--)
+                (s = r[l]) &&
+                    (o = (n < 3 ? s(o) : n > 3 ? s(e, t, o) : s(e, t)) || o)
+        return n > 3 && o && Object.defineProperty(e, t, o), o
+    },
+    Rr = ['ready', 'select'],
+    Vn = {
+        area: 'AreaChart',
+        bar: 'BarChart',
+        'md-bar': 'google.charts.Bar',
+        bubble: 'BubbleChart',
+        calendar: 'Calendar',
+        candlestick: 'CandlestickChart',
+        column: 'ColumnChart',
+        combo: 'ComboChart',
+        gantt: 'Gantt',
+        gauge: 'Gauge',
+        geo: 'GeoChart',
+        histogram: 'Histogram',
+        line: 'LineChart',
+        'md-line': 'google.charts.Line',
+        org: 'OrgChart',
+        pie: 'PieChart',
+        sankey: 'Sankey',
+        scatter: 'ScatterChart',
+        'md-scatter': 'google.charts.Scatter',
+        'stepped-area': 'SteppedAreaChart',
+        table: 'Table',
+        timeline: 'Timeline',
+        treemap: 'TreeMap',
+        wordtree: 'WordTree',
+    },
+    _ = class extends M {
+        constructor() {
+            super(...arguments),
+                (this.type = 'column'),
+                (this.events = []),
+                (this.options = void 0),
+                (this.cols = void 0),
+                (this.rows = void 0),
+                (this.data = void 0),
+                (this.view = void 0),
+                (this.selection = void 0),
+                (this.drawn = !1),
+                (this._data = void 0),
+                (this.chartWrapper = null),
+                (this.redrawTimeoutId = void 0)
+        }
+        render() {
+            return Nt`
       <div id="styles"></div>
       <div id="chartdiv"></div>
-    `}firstUpdated(){Ct(this.shadowRoot.getElementById("chartdiv")).then(t=>{this.chartWrapper=t,this.typeChanged(),google.visualization.events.addListener(t,"ready",()=>{this.drawn=!0,this.selection&&this.selectionChanged()}),google.visualization.events.addListener(t,"select",()=>{this.selection=t.getChart().getSelection()}),this.propagateEvents(xt,t)})}updated(t){t.has("type")&&this.typeChanged(),(t.has("rows")||t.has("cols"))&&this.rowsOrColumnsChanged(),t.has("data")&&this.dataChanged(),t.has("view")&&this.viewChanged(),(t.has("_data")||t.has("options"))&&this.redraw(),t.has("selection")&&this.selectionChanged()}typeChanged(){if(this.chartWrapper==null)return;this.chartWrapper.setChartType(Nt[this.type]||this.type);let t=this.chartWrapper.getChart();google.visualization.events.addOneTimeListener(this.chartWrapper,"ready",()=>{let e=this.chartWrapper.getChart();e!==t&&this.propagateEvents(this.events.filter(i=>!xt.includes(i)),e);let s=this.shadowRoot.getElementById("styles");s.children.length||this.localizeGlobalStylesheets(s)}),this.redraw()}propagateEvents(t,e){for(let s of t)google.visualization.events.addListener(e,s,i=>{this.dispatchEvent(new CustomEvent(`google-chart-${s}`,{bubbles:!0,composed:!0,detail:{chart:this.chartWrapper.getChart(),data:i}}))})}selectionChanged(){if(this.chartWrapper==null)return;let t=this.chartWrapper.getChart();if(t!=null&&t.setSelection){if(this.type==="timeline"){let e=JSON.stringify(t.getSelection());if(JSON.stringify(this.selection)===e)return}t.setSelection(this.selection)}}redraw(){this.chartWrapper==null||this._data==null||(this.chartWrapper.setDataTable(this._data),this.chartWrapper.setOptions(this.options||{}),this.drawn=!1,this.redrawTimeoutId!==void 0&&clearTimeout(this.redrawTimeoutId),this.redrawTimeoutId=window.setTimeout(()=>{this.chartWrapper.draw()},5))}get imageURI(){if(this.chartWrapper==null)return null;let t=this.chartWrapper.getChart();return t&&t.getImageURI()}viewChanged(){!this.view||(this._data=this.view)}async rowsOrColumnsChanged(){let{rows:t,cols:e}=this;if(!(!t||!e))try{let s=await tt({cols:e});s.addRows(t),this._data=s}catch(s){this.shadowRoot.getElementById("chartdiv").textContent=String(s)}}dataChanged(){let t=this.data,e;if(!t)return;let s=!1;try{t=JSON.parse(t)}catch(i){s=typeof t=="string"||t instanceof String}s?e=fetch(t).then(i=>i.json()):e=Promise.resolve(t),e.then(tt).then(i=>{this._data=i})}localizeGlobalStylesheets(t){let e=Array.from(document.head.querySelectorAll('link[rel="stylesheet"][type="text/css"][id^="load-css-"]'));for(let s of e){let i=document.createElement("link");i.setAttribute("rel","stylesheet"),i.setAttribute("type","text/css"),i.setAttribute("href",s.getAttribute("href")),t.appendChild(i)}}};u.styles=W`
+    `
+        }
+        firstUpdated() {
+            Hr(this.shadowRoot.getElementById('chartdiv')).then((e) => {
+                ;(this.chartWrapper = e),
+                    this.typeChanged(),
+                    google.visualization.events.addListener(e, 'ready', () => {
+                        ;(this.drawn = !0),
+                            this.selection && this.selectionChanged()
+                    }),
+                    google.visualization.events.addListener(e, 'select', () => {
+                        this.selection = e.getChart().getSelection()
+                    }),
+                    this.propagateEvents(Rr, e)
+            })
+        }
+        updated(e) {
+            e.has('type') && this.typeChanged(),
+                (e.has('rows') || e.has('cols')) && this.rowsOrColumnsChanged(),
+                e.has('data') && this.dataChanged(),
+                e.has('view') && this.viewChanged(),
+                (e.has('_data') || e.has('options')) && this.redraw(),
+                e.has('selection') && this.selectionChanged()
+        }
+        typeChanged() {
+            if (this.chartWrapper == null) return
+            this.chartWrapper.setChartType(Vn[this.type] || this.type)
+            let e = this.chartWrapper.getChart()
+            google.visualization.events.addOneTimeListener(
+                this.chartWrapper,
+                'ready',
+                () => {
+                    let t = this.chartWrapper.getChart()
+                    t !== e &&
+                        this.propagateEvents(
+                            this.events.filter((n) => !Rr.includes(n)),
+                            t,
+                        )
+                    let i = this.shadowRoot.getElementById('styles')
+                    i.children.length || this.localizeGlobalStylesheets(i)
+                },
+            ),
+                this.redraw()
+        }
+        propagateEvents(e, t) {
+            for (let i of e)
+                google.visualization.events.addListener(t, i, (n) => {
+                    this.dispatchEvent(
+                        new CustomEvent(`google-chart-${i}`, {
+                            bubbles: !0,
+                            composed: !0,
+                            detail: {
+                                chart: this.chartWrapper.getChart(),
+                                data: n,
+                            },
+                        }),
+                    )
+                })
+        }
+        selectionChanged() {
+            if (this.chartWrapper == null) return
+            let e = this.chartWrapper.getChart()
+            if (e != null && e.setSelection) {
+                if (this.type === 'timeline') {
+                    let t = JSON.stringify(e.getSelection())
+                    if (JSON.stringify(this.selection) === t) return
+                }
+                e.setSelection(this.selection)
+            }
+        }
+        redraw() {
+            this.chartWrapper == null ||
+                this._data == null ||
+                (this.chartWrapper.setDataTable(this._data),
+                this.chartWrapper.setOptions(this.options || {}),
+                (this.drawn = !1),
+                this.redrawTimeoutId !== void 0 &&
+                    clearTimeout(this.redrawTimeoutId),
+                (this.redrawTimeoutId = window.setTimeout(() => {
+                    this.chartWrapper.draw()
+                }, 5)))
+        }
+        get imageURI() {
+            if (this.chartWrapper == null) return null
+            let e = this.chartWrapper.getChart()
+            return e && e.getImageURI()
+        }
+        viewChanged() {
+            this.view && (this._data = this.view)
+        }
+        async rowsOrColumnsChanged() {
+            let { rows: e, cols: t } = this
+            if (!(!e || !t))
+                try {
+                    let i = await le({ cols: t })
+                    i.addRows(e), (this._data = i)
+                } catch (i) {
+                    this.shadowRoot.getElementById('chartdiv').textContent =
+                        String(i)
+                }
+        }
+        dataChanged() {
+            let e = this.data,
+                t
+            if (!e) return
+            let i = !1
+            try {
+                e = JSON.parse(e)
+            } catch {
+                i = typeof e == 'string' || e instanceof String
+            }
+            i ? (t = fetch(e).then((n) => n.json())) : (t = Promise.resolve(e)),
+                t.then(le).then((n) => {
+                    this._data = n
+                })
+        }
+        localizeGlobalStylesheets(e) {
+            let t = Array.from(
+                document.head.querySelectorAll(
+                    'link[rel="stylesheet"][type="text/css"][id^="load-css-"]',
+                ),
+            )
+            for (let i of t) {
+                let n = document.createElement('link')
+                n.setAttribute('rel', 'stylesheet'),
+                    n.setAttribute('type', 'text/css'),
+                    n.setAttribute('href', i.getAttribute('href')),
+                    e.appendChild(n)
+            }
+        }
+    }
+_.styles = De`
     :host {
       display: -webkit-flex;
       display: -ms-flex;
@@ -31,40 +2469,402 @@
     .google-visualization-table-loadtest {
       padding-left: 6px;
     }
-  `;y([f({type:String,reflect:!0})],u.prototype,"type",void 0);y([f({type:Array})],u.prototype,"events",void 0);y([f({type:Object,hasChanged:()=>!0})],u.prototype,"options",void 0);y([f({type:Array})],u.prototype,"cols",void 0);y([f({type:Array})],u.prototype,"rows",void 0);y([f({type:String})],u.prototype,"data",void 0);y([f({type:Object})],u.prototype,"view",void 0);y([f({type:Array})],u.prototype,"selection",void 0);y([f({type:Object})],u.prototype,"_data",void 0);customElements.define("google-chart",u);})();
-/**
- * @license
- * Copyright 2014-2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
- * @license
- * Copyright 2017 Google LLC
- * SPDX-License-Identifier: BSD-3-Clause
- */
-/**
- * @license
- * Copyright 2019 Google LLC
- * SPDX-License-Identifier: BSD-3-Clause
- */
-/**
- * @license
- * Copyright 2021 Google LLC
- * SPDX-License-Identifier: BSD-3-Clause
- */
-/**
- * @license
- * Copyright 2022 Google LLC
- * SPDX-License-Identifier: BSD-3-Clause
- */
+  `
+R([b({ type: String, reflect: !0 })], _.prototype, 'type', void 0)
+R([b({ type: Array })], _.prototype, 'events', void 0)
+R([b({ type: Object, hasChanged: () => !0 })], _.prototype, 'options', void 0)
+R([b({ type: Array })], _.prototype, 'cols', void 0)
+R([b({ type: Array })], _.prototype, 'rows', void 0)
+R([b({ type: String })], _.prototype, 'data', void 0)
+R([b({ type: Object })], _.prototype, 'view', void 0)
+R([b({ type: Array })], _.prototype, 'selection', void 0)
+R([b({ type: Object })], _.prototype, '_data', void 0)
+customElements.define('google-chart', _)
+function Wn({ type: r, options: e, cachedData: t }) {
+    return {
+        chart: null,
+        init: function () {
+            let i = this.initChart()
+            this.$wire.$on('updateChart', async ({ data: n }) => {
+                i.data = n
+            })
+        },
+        initChart: function (i = null) {
+            return (
+                (this.chart = this.$refs.googleChart),
+                (this.chart.type = r),
+                (this.chart.options = e ?? {}),
+                le(i ?? t).then((n) => {
+                    this.chart.data = n
+                }),
+                this.chart
+            )
+        },
+    }
+}
+export { Wn as default }
+/*! Bundled license information:
+
+safevalues/environment/dev.js:
+  (**
+   * @license
+   * SPDX-License-Identifier: Apache-2.0
+   *)
+
+safevalues/internals/secrets.js:
+  (**
+   * @license
+   * SPDX-License-Identifier: Apache-2.0
+   *)
+
+safevalues/internals/trusted_types.js:
+  (**
+   * @license
+   * SPDX-License-Identifier: Apache-2.0
+   *)
+
+safevalues/internals/resource_url_impl.js:
+  (**
+   * @license
+   * SPDX-License-Identifier: Apache-2.0
+   *)
+
+safevalues/internals/script_impl.js:
+  (**
+   * @license
+   * SPDX-License-Identifier: Apache-2.0
+   *)
+
+safevalues/internals/string_literal.js:
+  (**
+   * @license
+   * SPDX-License-Identifier: Apache-2.0
+   *)
+
+safevalues/builders/resource_url_builders.js:
+  (**
+   * @license
+   * SPDX-License-Identifier: Apache-2.0
+   *)
+
+safevalues/internals/attribute_impl.js:
+  (**
+   * @license
+   * SPDX-License-Identifier: Apache-2.0
+   *)
+
+safevalues/internals/html_impl.js:
+  (**
+   * @license
+   * SPDX-License-Identifier: Apache-2.0
+   *)
+
+safevalues/internals/style_impl.js:
+  (**
+   * @license
+   * SPDX-License-Identifier: Apache-2.0
+   *)
+
+safevalues/internals/style_sheet_impl.js:
+  (**
+   * @license
+   * SPDX-License-Identifier: Apache-2.0
+   *)
+
+safevalues/builders/url_sanitizer.js:
+  (**
+   * @license
+   * SPDX-License-Identifier: Apache-2.0
+   *)
+
+safevalues/dom/elements/anchor.js:
+  (**
+   * @license
+   * SPDX-License-Identifier: Apache-2.0
+   *)
+
+safevalues/dom/elements/area.js:
+  (**
+   * @license
+   * SPDX-License-Identifier: Apache-2.0
+   *)
+
+safevalues/dom/elements/base.js:
+  (**
+   * @license
+   * SPDX-License-Identifier: Apache-2.0
+   *)
+
+safevalues/dom/elements/button.js:
+  (**
+   * @license
+   * SPDX-License-Identifier: Apache-2.0
+   *)
+
+safevalues/dom/elements/element.js:
+  (**
+   * @license
+   * SPDX-License-Identifier: Apache-2.0
+   *)
+
+safevalues/dom/elements/embed.js:
+  (**
+   * @license
+   * SPDX-License-Identifier: Apache-2.0
+   *)
+
+safevalues/dom/elements/form.js:
+  (**
+   * @license
+   * SPDX-License-Identifier: Apache-2.0
+   *)
+
+safevalues/dom/elements/iframe.js:
+  (**
+   * @license
+   * SPDX-License-Identifier: Apache-2.0
+   *)
+
+safevalues/dom/elements/input.js:
+  (**
+   * @license
+   * SPDX-License-Identifier: Apache-2.0
+   *)
+
+safevalues/dom/elements/link.js:
+  (**
+   * @license
+   * SPDX-License-Identifier: Apache-2.0
+   *)
+
+safevalues/dom/elements/object.js:
+  (**
+   * @license
+   * SPDX-License-Identifier: Apache-2.0
+   *)
+
+safevalues/dom/elements/script.js:
+  (**
+   * @license
+   * SPDX-License-Identifier: Apache-2.0
+   *)
+
+safevalues/dom/elements/style.js:
+  (**
+   * @license
+   * SPDX-License-Identifier: Apache-2.0
+   *)
+
+safevalues/dom/elements/svg_use.js:
+  (**
+   * @license
+   * SPDX-License-Identifier: Apache-2.0
+   *)
+
+safevalues/dom/globals/document.js:
+  (**
+   * @license
+   * SPDX-License-Identifier: Apache-2.0
+   *)
+
+safevalues/dom/globals/dom_parser.js:
+  (**
+   * @license
+   * SPDX-License-Identifier: Apache-2.0
+   *)
+
+safevalues/dom/globals/global.js:
+  (**
+   * @license
+   * SPDX-License-Identifier: Apache-2.0
+   *)
+
+safevalues/dom/globals/location.js:
+  (**
+   * @license
+   * SPDX-License-Identifier: Apache-2.0
+   *)
+
+safevalues/dom/globals/range.js:
+  (**
+   * @license
+   * SPDX-License-Identifier: Apache-2.0
+   *)
+
+safevalues/dom/globals/service_worker_container.js:
+  (**
+   * @license
+   * SPDX-License-Identifier: Apache-2.0
+   *)
+
+safevalues/dom/globals/url.js:
+  (**
+   * @license
+   * SPDX-License-Identifier: Apache-2.0
+   *)
+
+safevalues/dom/globals/window.js:
+  (**
+   * @license
+   * SPDX-License-Identifier: Apache-2.0
+   *)
+
+safevalues/dom/globals/worker.js:
+  (**
+   * @license
+   * SPDX-License-Identifier: Apache-2.0
+   *)
+
+@lit/reactive-element/css-tag.js:
+  (**
+   * @license
+   * Copyright 2019 Google LLC
+   * SPDX-License-Identifier: BSD-3-Clause
+   *)
+
+@lit/reactive-element/reactive-element.js:
+  (**
+   * @license
+   * Copyright 2017 Google LLC
+   * SPDX-License-Identifier: BSD-3-Clause
+   *)
+
+lit-html/lit-html.js:
+  (**
+   * @license
+   * Copyright 2017 Google LLC
+   * SPDX-License-Identifier: BSD-3-Clause
+   *)
+
+lit-element/lit-element.js:
+  (**
+   * @license
+   * Copyright 2017 Google LLC
+   * SPDX-License-Identifier: BSD-3-Clause
+   *)
+
+lit-html/is-server.js:
+  (**
+   * @license
+   * Copyright 2022 Google LLC
+   * SPDX-License-Identifier: BSD-3-Clause
+   *)
+
+@lit/reactive-element/decorators/custom-element.js:
+  (**
+   * @license
+   * Copyright 2017 Google LLC
+   * SPDX-License-Identifier: BSD-3-Clause
+   *)
+
+@lit/reactive-element/decorators/property.js:
+  (**
+   * @license
+   * Copyright 2017 Google LLC
+   * SPDX-License-Identifier: BSD-3-Clause
+   *)
+
+@lit/reactive-element/decorators/state.js:
+  (**
+   * @license
+   * Copyright 2017 Google LLC
+   * SPDX-License-Identifier: BSD-3-Clause
+   *)
+
+@lit/reactive-element/decorators/base.js:
+  (**
+   * @license
+   * Copyright 2017 Google LLC
+   * SPDX-License-Identifier: BSD-3-Clause
+   *)
+
+@lit/reactive-element/decorators/event-options.js:
+  (**
+   * @license
+   * Copyright 2017 Google LLC
+   * SPDX-License-Identifier: BSD-3-Clause
+   *)
+
+@lit/reactive-element/decorators/query.js:
+  (**
+   * @license
+   * Copyright 2017 Google LLC
+   * SPDX-License-Identifier: BSD-3-Clause
+   *)
+
+@lit/reactive-element/decorators/query-all.js:
+  (**
+   * @license
+   * Copyright 2017 Google LLC
+   * SPDX-License-Identifier: BSD-3-Clause
+   *)
+
+@lit/reactive-element/decorators/query-async.js:
+  (**
+   * @license
+   * Copyright 2017 Google LLC
+   * SPDX-License-Identifier: BSD-3-Clause
+   *)
+
+@lit/reactive-element/decorators/query-assigned-elements.js:
+  (**
+   * @license
+   * Copyright 2021 Google LLC
+   * SPDX-License-Identifier: BSD-3-Clause
+   *)
+
+@lit/reactive-element/decorators/query-assigned-nodes.js:
+  (**
+   * @license
+   * Copyright 2017 Google LLC
+   * SPDX-License-Identifier: BSD-3-Clause
+   *)
+
+safevalues/index.mjs:
+  (**
+   * @license
+   * SPDX-License-Identifier: Apache-2.0
+   *)
+
+safevalues/dom/index.mjs:
+  (**
+   * @license
+   * SPDX-License-Identifier: Apache-2.0
+   *)
+
+@google-web-components/google-chart/loader.js:
+  (**
+   * @license
+   * Copyright 2014-2020 Google LLC
+   *
+   * Licensed under the Apache License, Version 2.0 (the "License");
+   * you may not use this file except in compliance with the License.
+   * You may obtain a copy of the License at
+   *
+   *     https://www.apache.org/licenses/LICENSE-2.0
+   *
+   * Unless required by applicable law or agreed to in writing, software
+   * distributed under the License is distributed on an "AS IS" BASIS,
+   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   * See the License for the specific language governing permissions and
+   * limitations under the License.
+   *)
+
+@google-web-components/google-chart/google-chart.js:
+  (**
+   * @license
+   * Copyright 2014-2020 Google LLC
+   *
+   * Licensed under the Apache License, Version 2.0 (the "License");
+   * you may not use this file except in compliance with the License.
+   * You may obtain a copy of the License at
+   *
+   *     https://www.apache.org/licenses/LICENSE-2.0
+   *
+   * Unless required by applicable law or agreed to in writing, software
+   * distributed under the License is distributed on an "AS IS" BASIS,
+   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   * See the License for the specific language governing permissions and
+   * limitations under the License.
+   *)
+*/
