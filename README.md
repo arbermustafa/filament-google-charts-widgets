@@ -12,7 +12,7 @@ You can install the package into a Laravel app that uses [Filament](https://fila
 composer require arbermustafa/filament-google-charts-widgets
 ```
 
-**Filament V2** - if you are using Filament v2.x, you can use [this section](https://github.com/arbermustafa/filament-google-charts-widgets/tree/1.0.7)
+**Filament V2** - if you are using Filament v2.x, you can use [this section](https://github.com/arbermustafa/filament-google-charts-widgets/tree/1.0.8)
 
 You can publish the config file with:
 
