@@ -22,14 +22,14 @@ class WidgetServiceProvider extends PluginServiceProvider
     protected function getStyles(): array
     {
         return [
-            self::$name . '-styles' => __DIR__ . '/../resources/dist/' . '/filament-google-charts-widgets.css',
+            self::$name . '-styles' => __DIR__ . '/../resources/dist/filament-google-charts-widgets.css',
         ];
     }
 
-    protected function getScripts(): array
+    protected function getBeforeCoreScripts(): array
     {
         return [
-            self::$name . '-scripts' => __DIR__ . '/../resources/dist/' . '/filament-google-charts-widgets.js',
+            self::$name . '-scripts' => __DIR__ . '/../resources/dist/filament-google-charts-widgets.js',
         ];
     }
 }

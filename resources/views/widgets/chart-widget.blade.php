@@ -22,22 +22,16 @@
             ? "wire:poll.{$interval}=\"updateChart\""
             : ''
         !!}>
-            <div class="chart-wrapper">
-                <google-chart
-                    id='filament-google-charts-{{ $id }}'
-                    type='{{ $this->getType() }}'
-                    options='{{ json_encode($this->getOptions()) }}'
-                    data='{{ json_encode($this->getCachedData()) }}'
-                    x-data = "{
-                        init: function () {
-                            const chart = document.getElementById('filament-google-charts-{{ $id }}')
-
-                            $wire.on('updateChart', async ({ data }) => {
-                                chart.data = data
-                            })
-                        }
-                    }"
+            <div x-data="googleChart({
+                    type: @js($this->getType()),
+                    options: @js($this->getOptions()),
+                    cachedData: @js($this->getCachedData()),
+                })"
                 wire:ignore>
+                <google-chart
+                    x-ref='googleChart'
+                    id='filament-google-charts-{{ $id }}'
+                ></google-chart>
             </div>
         </div>
     </x-filament::card>
